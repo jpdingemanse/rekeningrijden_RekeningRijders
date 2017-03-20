@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author victo
  */
 @NamedQuery(name = "Driver.findDriver",
-        query = "SELECT d FROM Driver u where d.id = :id")
+        query = "SELECT d FROM Driver d where d.id = :id")
 @Entity
 @XmlRootElement
 public class Driver implements Serializable {

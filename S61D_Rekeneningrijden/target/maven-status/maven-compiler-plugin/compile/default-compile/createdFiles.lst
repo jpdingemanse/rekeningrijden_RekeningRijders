@@ -1,1 +1,15 @@
+domain\Movement.class
+domain\Driver_.class
+boundary\rest\JARSconfig.class
+domain\Invoice.class
+domain\Movement_.class
+domain\Vehicle.class
 dao\UserDao.class
+domain\InvoiceRow_.class
+boundary\rest\MovementResource.class
+service\MovementService.class
+domain\Driver.class
+domain\InvoiceRow.class
+domain\Vehicle_.class
+dao\MovementDao.class
+domain\Invoice_.class

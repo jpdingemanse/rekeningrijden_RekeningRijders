@@ -16,19 +16,22 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 /**
  *
  * @author victo
  */
+@RunWith(MockitoJUnitRunner.class)
 public class MovementServiceTest {
-    @InjectMocks
+
     private MovementService ms;
     @Mock
     MovementDao md;

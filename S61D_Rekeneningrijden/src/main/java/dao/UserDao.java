@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
 public class UserDao {
     @PersistenceContext
     EntityManager em;
+    
     public boolean createNewDriver(Driver driver){
         try{
             em.persist(driver);

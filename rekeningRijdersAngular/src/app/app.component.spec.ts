@@ -2,12 +2,16 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {  NavbarTopComponent } from './navbar/navbarTop.component';
+import { NavbarLeftComponent } from './navbar/navbarLeft.component';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        NavbarTopComponent,
+        NavbarLeftComponent
       ],
     });
     TestBed.compileComponents();

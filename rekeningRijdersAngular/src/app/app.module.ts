@@ -1,20 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
-import { AppComponent } from './app.component';
+
+
+import { App } from './app.component';
+import { NavbarTopComponent } from './navbar/navbarTop.component';
+import { NavbarLeftComponent } from './navbar/navbarLeft.component';
+import { RoutePageComponent } from './routeView/route.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    App,
+    NavbarTopComponent,
+    NavbarLeftComponent,
+    RoutePageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCvXw7f8fGtztwUHQRFthQAKc1-XyYS24A'
+    })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ App ]
 })
-export class AppModule { }
+export class AppModule {}

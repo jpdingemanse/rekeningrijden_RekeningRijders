@@ -12,7 +12,14 @@ import { NavbarTopComponent } from './navbar/navbarTop.component';
 import { NavbarLeftComponent } from './navbar/navbarLeft.component';
 import { RoutePageComponent } from './routeView/route.component';
 
+
+import { BeaconService } from './rest/beacon.Service';
+
+import { DatePickerModule } from 'ng2-datepicker';
+ 
+ 
 @NgModule({
+  
   declarations: [
     App,
     NavbarTopComponent,
@@ -20,13 +27,17 @@ import { RoutePageComponent } from './routeView/route.component';
     RoutePageComponent
   ],
   imports: [
+    DatePickerModule,
     BrowserModule,
+     HttpModule,
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCvXw7f8fGtztwUHQRFthQAKc1-XyYS24A'
     })
   ],
-  providers: [],
+  providers: [
+    BeaconService
+  ],
   bootstrap: [ App ]
 })
 export class AppModule {}

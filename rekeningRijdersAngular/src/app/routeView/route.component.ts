@@ -4,8 +4,8 @@ import {
   OnInit 
 } from '@angular/core';
 
-import { MovementService } from './../rest/movement.Service';
-import { Movement } from './../domain/movement';
+import { BeaconService } from './../rest/beacon.Service';
+import { Beacon } from './../domain/beacon';
 
 @Component({
   selector: 'route-page',
@@ -17,16 +17,16 @@ import { Movement } from './../domain/movement';
 // `
 })
 export class RoutePageComponent implements OnInit {
-   movementList : Movement[];
-    selectedMovement : Movement;
+   movementList : Beacon[];
+    selectedMovement : Beacon;
         ngOnInit(): void {
-            this.movementService.getAllMovements()
+            this.movementService.GetMovementsPerIcan('123')
                             .then(value => this.movementList = value)
                             .then(() => console.log(this.movementList))
         }
-
-    constructor(private movementService : MovementService){}
-
+     
+    constructor(private movementService : BeaconService){}
+    
 }
 
 import {
@@ -57,6 +57,16 @@ export class App {
   markerDragEnd(m: marker, $event: MouseEvent) {
     console.log('dragEnd', m, $event);
   }
+
+  movementList : Beacon[];
+    selectedMovement : Beacon;
+        ngOnInit(): void {
+            this.movementService.GetMovementsPerIcan('123')
+                            .then(value => this.movementList = value)
+                            .then(() => console.log(this.movementList))
+        }
+     
+    constructor(private movementService : BeaconService){}
   
   markers: marker[] = [
 	  {

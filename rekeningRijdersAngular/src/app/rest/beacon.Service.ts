@@ -3,17 +3,17 @@ import { Http, Response, Headers } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Movement } from './../domain/movement';
+import { Beacon } from './../domain/beacon';
 
 @Injectable()
-export class MovementService {
-    private url = "http//192.168.24.46/S61D_RekeningRijders/api/Movement/";
-    private localurl = "http://localhost:8080/S61D_RekeningRijders/api/Movement/"
+export class BeaconService {
+    private url = "http//192.168.24.46/S61D_RekeningRijders/api/Beacon/";
+    private localurl = "http://localhost/S61D_Rekeneningrijden/api/Beacon/"
 
     constructor(private http : Http){}
 
-    getAllMovements(): Promise<Movement []> {
-        return this.http.get(this.localurl + "getAllMovements")
+    GetMovementsPerIcan(ican: String): Promise<Beacon []> {
+        return this.http.get(this.localurl + "GetMovementsPerIcan/"+ ican)
                         .toPromise()
                         .then(this.extractData);
     }

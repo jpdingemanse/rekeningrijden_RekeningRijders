@@ -1,67 +1,105 @@
-import {
-  Component,
-  NgModule
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core'
 
-import {
-  BrowserModule
-} from '@angular/platform-browser';
-
-import {
-  AgmCoreModule
-} from 'angular2-google-maps/core';
-
-
-//
-import { DatePickerOptions, DateModel } from 'ng2-datepicker';
- 
-@Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html'
-})
-export class AppComponent {
-  date: DateModel;
-  options: DatePickerOptions;
- 
-  constructor() {
-    this.options = new DatePickerOptions();
-    
-  }
-}
-//
+import { BeaconService } from './rest/beacon.Service';
+import { Beacon } from './domain/beacon';
 
 @Component({
    selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-  })
-export class App {
-  // google maps zoom level
-  zoom: number = 10;
+})
+export class App 
+//implements OnInit 
+{
+    // @ViewChild('beaconEditModal')
+    // bgModel;
+
+    // private beaconList : Beacon[];
+    // private selectedBeacon : Beacon;
+    //     ngOnInit(): void {
+    //         this.beaconService.GetMovementsPerIcan('123')
+    //                         .then(value => this.beaconList = value)
+    //                         .then(() => console.log(this.beaconList))
+    //     }
+
+    // constructor(private beaconService : BeaconService){}   
+
+
+
+// import {
+//   Component,
+//   NgModule
   
-  // initial center position for the map
-  lat: number = 51.562959;
-  lng: number =  5.065212;
+// } from '@angular/core';
+// import { HttpModule } from '@angular/http';
+// import { BeaconService } from './rest/beacon.Service';
+// import { Beacon } from './domain/beacon';
+
+// import {
+//   BrowserModule
+// } from '@angular/platform-browser';
+
+// import {
+//   AgmCoreModule
+// } from 'angular2-google-maps/core';
+
+// @Component({
+//   selector: 'app-root',
+//    templateUrl: 'app.component.html',
+//    styleUrls: ['app.component.css'],
+//    providers: [BeaconService, HttpModule],
+   
   
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
-  }
+// //   template: `
   
+// // `
+// })
+
+// @NgModule({
+//   imports: [ HttpModule, BrowserModule, AgmCoreModule.forRoot() ],
+//   declarations: [ App ],
+//   bootstrap: [ App ]
+// })
+
+// export class App {
+//   // google maps zoom level
+//   zoom: number = 8;
+  
+//   // initial center position for the map
+//   lat: number = 52.673858;
+//   lng: number = 4.815982;
+  
+//   // clickedMarker(label: string, index: number) {
+//   //   console.log(`clicked the marker: ${label || index}`)
+//   // }
+
+  
+//   // markerDragEnd(m: marker, $event: MouseEvent) {
+//   //   console.log('dragEnd', m, $event);
+//   // }
+//   movementList: Beacon[];
+//     selectedMovement : Beacon;
+//         ngOnInit(): void {
+//             this.movementService.GetMovementsPerIcan('123')
+//                             .then(value => this.movementList = value)
+//                             .then(() => console.log(this.movementList))
+//         }
+     
+//     constructor(private movementService : BeaconService){
+
+//       console.log(this.movementList.length);
+//     }
+//  // this.movementList.get(1);
  
-  
-  markerDragEnd(m: marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
-  }
-  
- markers: marker[] = [
-	  // {
-		//   lat: 52.673858,
-		//   lng: 4.815982,
-	  // },
-	  // {
-		//   lat: 52.373858,
-		//   lng: 4.215982,
-	  // },
+  markers: marker[] = [
+	  {
+		  lat: 52.673858,
+		  lng: 4.815982,
+	  },
+	  {
+		  lat: 52.373858,
+		  lng: 4.215982,
+	  },
     { lat: 51.562959, lng: 5.065212,  },
 { lat: 51.561838, lng: 5.07328,  },
 { lat: 51.560718, lng: 5.081348,  },
@@ -131,22 +169,21 @@ export class App {
 { lat: 51.442185, lng: 5.47102,  },
 { lat: 51.442185, lng: 5.475826,  },
 { lat: 51.443041, lng: 5.481577,  },
-	  // {
-		//   lat: 52.723858,
-		//   lng: 4.895982,
-	  // }
+	  {
+		  lat: 52.723858,
+		  lng: 4.895982,
+	  }
   ]
-
 }
-// just an interface for type safety.
+
+
+// export class AppModule {}
+// //just an interface for type safety.
 interface marker {
 	lat: number;
 	lng: number;
 }
 
-@NgModule({
-  imports: [ BrowserModule, AgmCoreModule.forRoot() ],
-  declarations: [ App ],
-  bootstrap: [ App ]
-})
-export class AppModule {}
+
+
+

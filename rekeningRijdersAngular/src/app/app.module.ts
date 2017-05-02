@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
-
+import { Routing } from './route/routing.component';
 
 import { App } from './app.component';
 import { NavbarTopComponent } from './navbar/navbarTop.component';
@@ -29,8 +29,9 @@ import { DatePickerModule } from 'ng2-datepicker';
   imports: [
     DatePickerModule,
     BrowserModule,
-     HttpModule,
+    HttpModule,
     FormsModule,
+    Routing,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCvXw7f8fGtztwUHQRFthQAKc1-XyYS24A'
     })

@@ -13,39 +13,34 @@
             <div class="panel panel-default">
                 <navbar-Left></navbar-Left>
             </div>
-
-      
+        </div>
     </div>
+    <!--<ng2-datepicker [options]="options" [(ngModel)]="date">2017-04-11</ng2-datepicker>
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table id="mytable" class="table table-bordred table-striped">
+                <thead>
+                    <th>Regio</th>
+                    <th>Datum</th>
+                    <th>Kenteken</th>
+                </thead>
+                <tbody>
+                    <td>1</td>
+                    <td>10-04-2017</td>
+                    <td>123</td>
+                </tbody>
 
+            </table>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <route-page> </route-page>
+            <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
+                <sebm-google-map-polyline>
 
+                    <sebm-google-map-polyline-point *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng">
+                    </sebm-google-map-polyline-point>
+                </sebm-google-map-polyline>
 
-</div>
-<ng2-datepicker [options]="options" [(ngModel)]="date">2017-04-11</ng2-datepicker>
-<div class="col-md-12">
-    <div class="table-responsive">
-        <table id="mytable" class="table table-bordred table-striped">
-            <thead>
-                <th>Regio</th>
-                <th>Datum</th>
-                <th>Kenteken</th>
-            </thead>
-            <tbody>
-                <td>1</td>
-                <td>10-04-2017</td>
-                <td>123</td>
-            </tbody>
-
-        </table>
-    </div>
-    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <!--<route-page> </route-page>-->
-        <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
-            <sebm-google-map-polyline>
-
-                <sebm-google-map-polyline-point *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng">
-                </sebm-google-map-polyline-point>
-            </sebm-google-map-polyline>
-
-        </sebm-google-map>
-    </div>
-</div>
+            </sebm-google-map>
+        </div>
+    </div>-->

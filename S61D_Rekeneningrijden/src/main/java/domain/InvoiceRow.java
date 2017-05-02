@@ -11,11 +11,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author victo
  */
+@NamedQueries({
+    @NamedQuery(name="Invoicerow.getInvoiceRows", query="Select i from InvoiceRow i where i.invoiceParent = :invoice")
+})
 @Entity
 public class InvoiceRow implements Serializable {
     @Id
@@ -24,6 +30,8 @@ public class InvoiceRow implements Serializable {
     double price;
     String description;
 
+    @ManyToOne
+    Invoice invoiceParent;
     public InvoiceRow() {
     }
 

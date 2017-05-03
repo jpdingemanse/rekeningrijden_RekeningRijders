@@ -21,6 +21,7 @@ import javax.inject.Inject;
 public class InvoiceService {
     @Inject
     InvoiceDAO invoiceDao;
+    @Inject
     InvoiceRowDAO invoiceRowDao;
     
     public List<Invoice> getInvoices(Driver driver){

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from 'app/global/login.Service'
 
 @Component({
     selector : 'navbar-Top',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
 })
 
 export class NavbarTopComponent {
-    title = "Test"
+    loginText : string = 'Login'
+
+    constructor(private loginService : LoginService){
+        if(this.loginService.loginStatus){
+            this.loginText = 'Logout';
+        }
+    }
 }

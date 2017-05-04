@@ -7,12 +7,12 @@ import { Driver } from './../domain/driver';
 
 @Injectable()
 export class DriverService {
-    private url = "http://192.168.24.46:8080/S61D_RekeningAdministratie/api/Driver/";
-    private localurl = "http://localhost:18410/S61D_RekeningAdministratie/api/Driver/"
+    private url = "http://192.168.24.46:8080/S61D_Rekeneningrijden/api/Driver/";
+    private localurl = "http://localhost:9806/S61D_Rekeneningrijden/api/Driver/"
 
     constructor(private http : Http){}
     getUserByUsernameAndPassword(username: String, password: String){
-         return this.http.get(this.localurl + 'GetUserByUsernameAndPassword/' + username +'/'+ password)
+         return this.http.get(this.localurl + 'CheckLogin/' + username +'/'+ password)
                         .toPromise()
                         .then(this.extractData);
     }

@@ -6,6 +6,7 @@
 package dao;
 
 import domain.Driver;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,7 +36,11 @@ public class DriverDAO {
     }
 
     public Driver getLogin(String username, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Driver> driver = em.createNamedQuery("Driver.getLogin").setParameter("username", username).setParameter("password", password).getResultList();
+        if(!driver.isEmpty()){
+            return driver.get(0);
+        }
+        return null;
     }
     
     

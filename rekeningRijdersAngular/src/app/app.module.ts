@@ -14,12 +14,14 @@ import { NavbarLeftComponent } from './navbar/navbarLeft.component';
 import { RoutePageComponent } from './routeView/route.component';
 import { HomePageComponent } from './body/home.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { BeaconService } from './rest/beacon.Service';
 import { DriverService } from './rest/driver.Service';
 
 import { LoginService } from './global/login.Service';
 import { DatePickerModule } from 'ng2-datepicker';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { DatePickerModule } from 'ng2-datepicker';
     NavbarTopComponent,
     NavbarLeftComponent,
     RoutePageComponent,
-    HomePageComponent
+    HomePageComponent,
+    ProfileComponent
   ],
   imports: [
     DatePickerModule,

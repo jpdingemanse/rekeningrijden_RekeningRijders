@@ -42,12 +42,8 @@ public class DriverResource {
     }
     
     @GET
-    @Path("CheckLogin/{username}/password")
+    @Path("CheckLogin/{username}/{password}")
     public Driver getLogin(@PathParam("username")String username, @PathParam("password")String password){
         return driverService.getLogin(username, password);
     }
-    
-    
-    
-    
 }

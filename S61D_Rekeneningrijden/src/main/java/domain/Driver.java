@@ -6,6 +6,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,6 +59,8 @@ public class Driver implements Serializable {
         this.password = password;
         this.houseNumber = houseNumber;
         this.phoneNumber = phoneNumber;
+        this.allVehicle = new ArrayList<>();
+        this.invoices = new ArrayList<>();
     }
 
     public int getId() {
@@ -140,6 +143,22 @@ public class Driver implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    public List<Vehicle> getAllVehicle() {
+        return allVehicle;
+    }
+
+    public void setAllVehicle(List<Vehicle> allVehicle) {
+        this.allVehicle = allVehicle;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+    
     
     
     

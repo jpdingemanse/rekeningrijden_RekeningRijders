@@ -32,4 +32,13 @@ public class InvoiceService {
         }
         return invoices;
     }
+    
+    public Invoice getInvoice(int id){
+        return invoiceDao.getInvoice(id);
+    }
+    
+    public void invoicePaid(Invoice invoice){
+        invoice.setPaid(true);
+        invoiceDao.invoicePaid(invoice);
+    }
 }

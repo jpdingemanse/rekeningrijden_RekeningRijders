@@ -31,6 +31,7 @@ public class Invoice implements Serializable {
     BigInteger id;
     long timestamp;
     boolean paid;
+    String maand;
     
     @ManyToOne
     Driver billedDriver;
@@ -41,10 +42,11 @@ public class Invoice implements Serializable {
     public Invoice() {
     }
 
-    public Invoice(BigInteger id, long timestamp, boolean paid) {
+    public Invoice(BigInteger id, long timestamp, boolean paid, String maand) {
         this.id = id;
         this.timestamp = timestamp;
         this.paid = paid;
+        this.maand = maand;
     }
 
     public BigInteger getId() {
@@ -85,5 +87,13 @@ public class Invoice implements Serializable {
 
     public void setInvoiceRows(List<InvoiceRow> invoiceRows) {
         this.invoiceRows = invoiceRows;
+    }
+
+    public String getMaand() {
+        return maand;
+    }
+
+    public void setMaand(String maand) {
+        this.maand = maand;
     }
 }

@@ -24,4 +24,12 @@ public class InvoiceDAO {
     public List<Invoice> getInvoices(Driver driver){
         return (List<Invoice>) em.createNamedQuery("Invoice.getInvoices", Invoice.class).setParameter("billedDriver", driver).getResultList();
     }
+    
+    public void invoicePaid(Invoice invoice){
+        em.merge(invoice);
+    }
+    
+    public Invoice getInvoice(int id){
+        return em.find(Invoice.class, id);
+    }
 }

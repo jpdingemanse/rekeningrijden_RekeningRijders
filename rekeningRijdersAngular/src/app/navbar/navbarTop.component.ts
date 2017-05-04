@@ -14,4 +14,10 @@ export class NavbarTopComponent {
             this.loginText = 'Logout';
         }
     }
+
+    navigateToLogin(){
+        this.loginService.registerPage = false;
+        this.loginService.loginPage = false;
+        this.loginService.loginStatus = false;
+    }
 }

@@ -3,7 +3,7 @@ export class Driver {
         public id: number,
         public name: string,
         public lastname: string,
-        public postalcode: string,
+        public postalCode: string,
         public city: string,
         public email: string,
         public username: string,

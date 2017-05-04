@@ -26,4 +26,9 @@ export class LoginComponent {
                         })
         
     }
+    register(){
+        this.loginService.registerPage = true;
+        this.loginService.loginPage = true;
+        this.loginService.loginStatus = false;
+    }
 }

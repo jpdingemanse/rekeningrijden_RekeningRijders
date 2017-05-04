@@ -10,14 +10,12 @@
             <div class="form-group">
                 <input #passwordInput class="form-control" placeholder="Wachtwoord" name="password" type="password" value="">
             </div>
-            <div class="checkbox">
-                <label>
-                    <input name="remember" type="checkbox" value="Remember Me">Onthouden
-                </label>
-            </div>
-            <button class="btn btn-sm btn-success" (click)="login(usernameInput.value, passwordInput.value)">Login</button>
+                <a (click)="register()">
+                    <h6>Registeren</h6>
+                </a>
+            <button class="btn btn-sm btn-success pull-right" (click)="login(usernameInput.value, passwordInput.value)">Login</button>
             <div class="form-group" style="margin-top: 10px;">
-               <label class="">
+               <label >
                     <font color="red">{{loginErrorMessage}}</font>
                 </label>
             </div>

@@ -20,7 +20,7 @@ export class DriverService {
     createNewDriver(driver : Driver) : Promise<Driver> {
         var header = new Headers();
         header.append('Content-Type', 'application/json');
-        return this.http.post(this.localurl + 'createNewDriver/', JSON.stringify(driver), {headers: header})
+        return this.http.post(this.localurl + 'CreateDriver/', JSON.stringify(driver), {headers: header})
                         .toPromise()
                         .then(this.extractData);
     }

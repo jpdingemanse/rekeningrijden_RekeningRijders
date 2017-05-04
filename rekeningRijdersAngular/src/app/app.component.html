@@ -8,7 +8,7 @@
             </div>
         </div>
         <div style="padding-top:50px;"> </div>
-        <div *ngIf="loginService.loginPage">
+        <div *ngIf="loginService.loginStatus">
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
                     <navbar-Left></navbar-Left>
             </div>
@@ -20,6 +20,12 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ></div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <login-page></login-page>
+            </div>
+        </div>
+        <div *ngIf="loginService.registerPage">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ></div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <register-page></register-page>
             </div>
         </div>
     </div>

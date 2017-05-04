@@ -15,6 +15,7 @@ import { RoutePageComponent } from './routeView/route.component';
 import { HomePageComponent } from './body/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 
 import { BeaconService } from './rest/beacon.Service';
 import { DriverService } from './rest/driver.Service';
@@ -31,7 +32,8 @@ import { DatePickerModule } from 'ng2-datepicker';
     NavbarLeftComponent,
     RoutePageComponent,
     HomePageComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     DatePickerModule,

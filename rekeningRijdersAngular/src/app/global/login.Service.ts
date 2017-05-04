@@ -3,10 +3,12 @@ import { Driver } from 'app/domain/driver';
 
 @Injectable()
 export class LoginService {
-    public loginStatus : boolean = true;
-    public loginPage : boolean = true;
+    public loginStatus : boolean = false;
+    public loginPage : boolean = false;
 
     public loginUser : Driver;
+
+    public registerPage : boolean = false;
 
 
 }

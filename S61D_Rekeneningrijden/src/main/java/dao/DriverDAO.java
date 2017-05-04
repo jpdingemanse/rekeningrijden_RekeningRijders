@@ -25,9 +25,14 @@ public class DriverDAO {
     }
     
     public Driver createNewDriver(Driver driver){
-        em.persist(driver);
-        em.flush();
-        return em.find(Driver.class, driver.getId());
+        try {
+            em.persist(driver);
+            em.flush();
+            return em.find(Driver.class, driver.getId());
+        }catch (Exception e){
+            return null;
+        }
+        
     }
 
     public Driver getDriver(int id) {

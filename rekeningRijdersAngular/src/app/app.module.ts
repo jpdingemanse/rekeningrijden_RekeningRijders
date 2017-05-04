@@ -15,9 +15,11 @@ import { RoutePageComponent } from './routeView/route.component';
 import { HomePageComponent } from './body/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { InvoicePageComponent } from './invoiceView/invoice.component'
 
 import { BeaconService } from './rest/beacon.Service';
 import { DriverService } from './rest/driver.Service';
+import { InvoiceService } from './rest/invoice.Service';
 
 import { LoginService } from './global/login.Service';
 import { DatePickerModule } from 'ng2-datepicker';
@@ -31,7 +33,8 @@ import { DatePickerModule } from 'ng2-datepicker';
     NavbarLeftComponent,
     RoutePageComponent,
     HomePageComponent,
-    ProfileComponent
+    ProfileComponent,
+    InvoicePageComponent
   ],
   imports: [
     DatePickerModule,
@@ -46,9 +49,10 @@ import { DatePickerModule } from 'ng2-datepicker';
   providers: [
     BeaconService,
     DriverService,
-    LoginService
-    
+    LoginService,
+    InvoiceService
+
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

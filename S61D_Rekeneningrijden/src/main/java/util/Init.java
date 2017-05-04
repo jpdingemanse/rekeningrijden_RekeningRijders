@@ -6,7 +6,9 @@
 package util;
 
 import dao.DriverDAO;
+import dao.InvoiceDAO;
 import domain.Driver;
+import domain.Invoice;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -21,6 +23,8 @@ import javax.inject.Inject;
 public class Init {
     @Inject
     DriverDAO driverDAO;
+    @Inject
+    InvoiceDAO invoiceDAO;
     
     @PostConstruct
     public void Init() {

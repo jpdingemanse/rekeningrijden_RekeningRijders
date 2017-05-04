@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table id="mytable" class="table table-bordred table-striped">
+                        <thead>
+                            <th>Maand</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let i of invoices">
+                                <td>{{i.maand}}</td>
+                                <td>{{i.paid}}</td>
+                               <td>
+                            <p data-placement="top" data-toggle="tooltip" title="Invoegen"><button class="btn btn-success btn-xs" (click)="onClickOpenInvoice(i)"><i class="fa fa-car" aria-hidden="true"></i>Details</button></p>
+                        </td>
+                        <td>
+                            <p data-placement="top" data-toggle="tooltip" title="Invoegen"><button class="btn btn-success btn-xs" (click)="onClickInvoicePaid(i)"><i class="fa fa-car" aria-hidden="true"></i>Betaald</button></p>
+                        </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table id="mytable" class="table table-bordred table-striped">
+                        <thead>
+                            <th>Prijs</th>
+                            <th>Omschrijving</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ir of invoiceRowss">
+                                <td>{{ir.price}}</td>
+                                <td>{{ir.description}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

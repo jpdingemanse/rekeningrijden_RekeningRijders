@@ -41,6 +41,9 @@ public class Driver implements Serializable {
     
     @OneToMany(mappedBy = "owner")
     private List<Vehicle> allVehicle;
+    
+    @OneToMany(mappedBy = "billedDriver")
+    private List<Invoice> invoices;
 
     public Driver() {
     }

@@ -27,7 +27,6 @@ public class MovementResource {
     MovementService movementService;
     
     @GET
-    @Produces(APPLICATION_JSON)
     @Path("getMovements")
     public List<Movement> getAllMovements(Vehicle vehicle){
         return movementService.getAllMovements(vehicle);

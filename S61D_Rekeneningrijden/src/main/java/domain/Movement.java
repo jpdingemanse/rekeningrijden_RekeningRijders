@@ -24,24 +24,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Movement implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)        
+    int id;
     @ManyToOne
     private Vehicle vehicle;
 
     public Movement() {
     }
 
-    public Movement(String id, Vehicle vehicle) {
+    public Movement(int id, Vehicle vehicle) {
         this.id = id;
         this.vehicle = vehicle;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

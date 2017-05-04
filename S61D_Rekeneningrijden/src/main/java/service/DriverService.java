@@ -27,5 +27,9 @@ public class DriverService {
     public Driver getDriver(int id) {
         return driverDao.getDriver(id);
     }
+
+    public Driver getLogin(String username, String password) {
+        return driverDao.getLogin(username, password);
+    }
     
 }

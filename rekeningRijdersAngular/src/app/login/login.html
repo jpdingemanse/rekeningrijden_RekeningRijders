@@ -1,0 +1,26 @@
+<div class="panel-heading">
+    <h3 class="panel-title">Log in</h3>
+</div>
+<div class="panel-body">
+    <form role="form">
+        <fieldset>
+            <div class="form-group">
+                <input #usernameInput class="form-control" placeholder="Gebruikernaam" name="username"  autofocus="" >
+            </div>
+            <div class="form-group">
+                <input #passwordInput class="form-control" placeholder="Wachtwoord" name="password" type="password" value="">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input name="remember" type="checkbox" value="Remember Me">Onthouden
+                </label>
+            </div>
+            <button class="btn btn-sm btn-success" (click)="login(usernameInput.value, passwordInput.value)">Login</button>
+            <div class="form-group" style="margin-top: 10px;">
+               <label class="">
+                    <font color="red">{{loginErrorMessage}}</font>
+                </label>
+            </div>
+        </fieldset>
+    </form>
+</div>

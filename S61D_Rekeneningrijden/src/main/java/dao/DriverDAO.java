@@ -33,6 +33,10 @@ public class DriverDAO {
         Driver result = em.find(Driver.class, id);
         return result;
     }
+
+    public Driver getLogin(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

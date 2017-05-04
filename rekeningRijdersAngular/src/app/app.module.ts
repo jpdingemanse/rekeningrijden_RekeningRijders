@@ -7,24 +7,28 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { Routing } from './route/routing.component';
 
-import { App } from './app.component';
+// import { App } from './app.component';
+import { AppComponent } from './app.component'
 import { NavbarTopComponent } from './navbar/navbarTop.component';
 import { NavbarLeftComponent } from './navbar/navbarLeft.component';
 import { RoutePageComponent } from './routeView/route.component';
-
+import { HomePageComponent } from './body/home.component';
+import { LoginComponent } from './login/login.component';
 
 import { BeaconService } from './rest/beacon.Service';
+import { DriverService } from './rest/driver.Service';
 
+import { LoginService } from './global/login.Service';
 import { DatePickerModule } from 'ng2-datepicker';
- 
- 
+
 @NgModule({
-  
   declarations: [
-    App,
+    AppComponent,
+    LoginComponent,
     NavbarTopComponent,
     NavbarLeftComponent,
-    RoutePageComponent
+    RoutePageComponent,
+    HomePageComponent
   ],
   imports: [
     DatePickerModule,
@@ -37,8 +41,11 @@ import { DatePickerModule } from 'ng2-datepicker';
     })
   ],
   providers: [
-    BeaconService
+    BeaconService,
+    DriverService,
+    LoginService
+    
   ],
-  bootstrap: [ App ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {}

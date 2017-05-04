@@ -14,7 +14,6 @@ import { NavbarLeftComponent } from './navbar/navbarLeft.component';
 import { RoutePageComponent } from './routeView/route.component';
 import { HomePageComponent } from './body/home.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
 import { InvoicePageComponent } from './invoiceView/invoice.component'
 
 import { BeaconService } from './rest/beacon.Service';
@@ -33,7 +32,6 @@ import { DatePickerModule } from 'ng2-datepicker';
     NavbarLeftComponent,
     RoutePageComponent,
     HomePageComponent,
-    ProfileComponent,
     InvoicePageComponent
   ],
   imports: [

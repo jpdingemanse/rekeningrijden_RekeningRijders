@@ -6,6 +6,7 @@
 package boundary.rest;
 
 
+import domain.RequestAddVehicle;
 import domain.Vehicle;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -47,9 +48,21 @@ public class VehicleResource {
         return vehicleService.getVehicleByOwner(id);
     }
     
-     @GET
-    @Path("GetAllVehicle")
-    public List<Vehicle> getAllVehicle(){
-        return vehicleService.getAllVehicles();
+    @POST
+    @Path("NewRequest")
+    @Consumes("application/json")
+    public boolean NewRequest(RequestAddVehicle request){
+        return vehicleService.transmitNewRequest(request);
     }
+    
+    @GET
+    @Path("GetAllRequest/{id}")
+    public List<RequestAddVehicle> getAllRequest(@PathParam("id")int id){
+        return vehicleService.getAllReQuest(id);
+    }
+    
+    
+
+    
+   
 }

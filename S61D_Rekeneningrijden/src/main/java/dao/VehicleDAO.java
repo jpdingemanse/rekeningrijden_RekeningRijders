@@ -44,9 +44,4 @@ public class VehicleDAO {
         return em.createQuery("select v from Vehicle v where v.owner.id = :id").setParameter("id", id).getResultList();
     }
     
-     public List<Vehicle> getAllVehicles(){
-        return em.createQuery("select v from Vehicle v").getResultList();
-        
-    }
-    
 }

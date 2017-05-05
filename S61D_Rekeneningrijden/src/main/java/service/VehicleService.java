@@ -6,7 +6,9 @@
 package service;
 
 import dao.VehicleDAO;
+import domain.RequestAddVehicle;
 import domain.Vehicle;
+import factory.VehicleTransmitter;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -20,6 +22,9 @@ public class VehicleService {
     @Inject
     VehicleDAO vehicleDAO;
     
+    @Inject
+    VehicleTransmitter vehicleTransmitter;
+    
     public Vehicle createNewVehicle(Vehicle vehicle){
         return vehicleDAO.createNewVehicle(vehicle);
     }
@@ -32,9 +37,14 @@ public class VehicleService {
         return vehicleDAO.getVehicleByOwner(id);
     }
     
-    public List<Vehicle> getAllVehicles()
-    {
-        return vehicleDAO.getAllVehicles();
+    public boolean transmitNewRequest(RequestAddVehicle request){
+        return vehicleTransmitter.SendRequestAddVehicleToDriver(request);
     }
+    
+    public List<RequestAddVehicle> getAllReQuest(int id){
+        return vehicleTransmitter.GetAllRequest(id);
+    }
+    
+
     
 }

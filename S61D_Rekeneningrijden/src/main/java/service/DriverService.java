@@ -8,6 +8,7 @@ package service;
 import dao.DriverDAO;
 import domain.Driver;
 import domain.Vehicle;
+import factory.DriverTransmitter;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -20,8 +21,13 @@ public class DriverService {
     @Inject
     DriverDAO driverDao;
     
+    @Inject 
+    DriverTransmitter driverTransmitter;
+    
     public Driver createNewDriver(Driver driver){
-        return driverDao.createNewDriver(driver);
+        Driver createdDriver = driverDao.createNewDriver(driver);
+        driverTransmitter.SendCreatedDriverToAdministrator(createdDriver);
+        return driver;
     }
 
     public Driver getDriver(int id) {
@@ -31,5 +37,6 @@ public class DriverService {
     public Driver getLogin(String username, String password) {
         return driverDao.getLogin(username, password);
     }
+
     
 }

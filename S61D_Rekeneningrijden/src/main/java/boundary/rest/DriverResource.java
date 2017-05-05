@@ -6,9 +6,7 @@
 package boundary.rest;
 
 
-import dao.DriverDAO;
 import domain.Driver;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -46,4 +44,6 @@ public class DriverResource {
     public Driver getLogin(@PathParam("username")String username, @PathParam("password")String password){
         return driverService.getLogin(username, password);
     }
+    
+    
 }

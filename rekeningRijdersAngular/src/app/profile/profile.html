@@ -1,34 +1,87 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <h1 class="panel-title pull-left" style="font-size:30px;">Profiel gegevens</h1>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="panel-title" style="font-size:30px; text-align: center">Profiel gegevens</h1>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-">
+                    <label>Naam</label>
+                    <input type="text" class="form-control" id="First_name" value="{{profile.name}}">
+                    <label>Achternaam</label>
+                    <input type="text" class="form-control" id="Last_name" value="{{profile.lastname}}">
+                    <label>Gebruikernaam</label>
+                    <input type="text" class="form-control" id="User_name" value="{{profile.username}}">
+                    <label>Wachtwoord</label>
+                    <input type="password" class="form-control" id="Password" value="{{profile.password}}">
+                    <label>Phonenumber</label>
+                    <input type="text" class="form-control" id="Phone_number" value="{{profile.phoneNumber}}">
+                    <label>PostCode</label>
+                    <input type="text" class="form-control" id="Postal" value="{{profile.postalCode}}">
+                    <label>Huisnummer</label>
+                    <input type="text" class="form-control" id="Houser_number" value="{{profile.houseNumber}}">
+                    <label>Stad</label>
+                    <input type="text" class="form-control" id="City" value="{{profile.city}}">
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="panel panel-default">
+            <div class="panel-body pull-right">
+                <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> Cancel</button>
+                <button class="btn btn-primary"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Profile wijzigen</button>
+            </div>
+        </div>
     </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <form class="form-">
-            <label >Naam</label>
-            <input type="text" class="form-control" id="First_name" value="{{profile.name}}">
-            <label >Achternaam</label>
-            <input type="text" class="form-control" id="Last_name" value="{{profile.lastname}}">
-            <label >Gebruikernaam</label>
-            <input type="text" class="form-control" id="User_name" value="{{profile.username}}">
-            <label >Wachtwoord</label>
-            <input type="password" class="form-control" id="Password" value="{{profile.password}}">
-            <label >Phonenumber</label>
-            <input type="text" class="form-control" id="Phone_number" value="{{profile.phoneNumber}}">
-            <label >PostCode</label>
-            <input type="text" class="form-control" id="Postal" value="{{profile.postalCode}}">
-            <label >Huisnummer</label>
-            <input type="text" class="form-control" id="Houser_number" value="{{profile.houseNumber}}">
-            <label >Stad</label>
-            <input type="text" class="form-control" id="City" value="{{profile.city}}">
-        </form>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="panel-title" style="font-size:30px; text-align: center">Voertuigen</h1>
+            </div>
+        </div>
+        <div class="panel panel-default" *ngFor="let v of vehicle">
+            <div class="panel-body" style="background-color: beige">
+                <h6 class="panel-title" style="font-size:25px; text-align: center">{{v.licensePlate}}</h6>
+            </div>
+        </div>
     </div>
-</div>
-<hr>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> Cancel</button>
-        <button class="btn btn-primary"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Update Profile</button>
+    <div class="col-lg-3">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="panel-title" style="font-size:30px; text-align: center">Aanvraag</h1>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <input #licensePlate type="text"/>
+                <button class="btn btn-primary pull-right" (click)="onclickNewRequest(licensePlate.value)">Aanvragen </button>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+               <label >
+                    <font color="red">{{errorMessage}}</font>
+                </label>
+            </div>
+        <div class="panel panel-default" *ngFor="let r of allRequest">
+            <div class="panel-body" style="background-color: beige">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h6 class="panel-title" style="font-size:25px; text-align: center">{{r.licensePlate}} </h6>
+                    </div>
+                    <div class="col-lg-4">
+                        <div *ngIf="r.status">
+                            <i class="fa fa-hourglass" aria-hidden="true"></i>
+                        </div>
+                        <div *ngIf="!r.status">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </div>

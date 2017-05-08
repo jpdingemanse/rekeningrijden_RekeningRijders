@@ -21,7 +21,7 @@ import javax.persistence.NamedQuery;
  * @author victo
  */
 @NamedQueries({
-    @NamedQuery(name="Invoicerow.getInvoiceRows", query="Select i from InvoiceRow i where i.invoiceParent = :invoice")
+    @NamedQuery(name="Invoicerow.getInvoiceRows", query="Select i from InvoiceRow i where i.invoice = :invoice")
 })
 @Entity
 public class InvoiceRow implements Serializable {

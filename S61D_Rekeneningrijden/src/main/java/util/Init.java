@@ -37,9 +37,6 @@ public class Init {
         Vehicle vehicle = vehicleDAO.createNewVehicle(new Vehicle("12-test-2"));
         vehicle.setOwner(driver);
         vehicleDAO.addVehicleToDriver(vehicle);
-        
-        
-        
     }
     
 }

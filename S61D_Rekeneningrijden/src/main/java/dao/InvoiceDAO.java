@@ -32,4 +32,10 @@ public class InvoiceDAO {
     public Invoice getInvoice(int id){
         return em.find(Invoice.class, id);
     }
+
+    public Invoice createInvoice(Invoice invoice) {
+        em.persist(invoice);
+        em.flush();
+        return em.find(Invoice.class, invoice.getId());
+    }
 }

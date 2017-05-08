@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
  * @author victo
  */
 @NamedQueries({
-    @NamedQuery(name="Invoice.getInvoices", query="Select i from Invoice i where i.billedDriver = :billedDriver")
+    @NamedQuery(name="Invoice.getInvoices", query="Select i from Invoice i where i.driver = :billedDriver")
 })
 @Entity
 public class Invoice implements Serializable {
@@ -33,7 +33,7 @@ public class Invoice implements Serializable {
     private String maand;
     
     @ManyToOne
-    private Driver billedDriver;
+    private Driver driver;
     
     @OneToMany(mappedBy="invoice")
     private List<InvoiceRow> invoiceRows;
@@ -72,12 +72,12 @@ public class Invoice implements Serializable {
         this.paid = paid;
     }
 
-    public Driver getBilledDriver() {
-        return billedDriver;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setBilledDriver(Driver billedDriver) {
-        this.billedDriver = billedDriver;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
     public List<InvoiceRow> getInvoiceRows() {

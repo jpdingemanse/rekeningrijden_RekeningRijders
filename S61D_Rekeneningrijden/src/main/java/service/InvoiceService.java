@@ -41,4 +41,8 @@ public class InvoiceService {
         invoice.setPaid(true);
         invoiceDao.invoicePaid(invoice);
     }
+
+    public Invoice createInvoice(Invoice invoice) {
+        return invoiceDao.createInvoice(invoice);
+    }
 }

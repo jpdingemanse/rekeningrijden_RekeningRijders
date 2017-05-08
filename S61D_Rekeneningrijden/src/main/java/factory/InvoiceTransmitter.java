@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -21,6 +22,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
  *
  * @author lino_
  */
+@Stateless
 public class InvoiceTransmitter {
     public boolean SendPayment(Invoice invoice) {
         Gson gson = new Gson();

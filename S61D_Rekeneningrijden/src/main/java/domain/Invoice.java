@@ -27,16 +27,15 @@ import javax.persistence.OneToMany;
 @Entity
 public class Invoice implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    BigInteger id;
-    long timestamp;
-    boolean paid;
-    String maand;
+    private BigInteger id;
+    private long timestamp;
+    private boolean paid;
+    private String maand;
     
     @ManyToOne
-    Driver billedDriver;
+    private Driver billedDriver;
     
-    @OneToMany(mappedBy="invoiceParent")
+    @OneToMany(mappedBy="invoice")
     private List<InvoiceRow> invoiceRows;
     
     public Invoice() {

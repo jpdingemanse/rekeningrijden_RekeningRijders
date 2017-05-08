@@ -38,6 +38,8 @@ public class Init {
         vehicle.setOwner(driver);
         vehicleDAO.addVehicleToDriver(vehicle);
         
+        
+        
     }
     
 }

@@ -7,6 +7,7 @@ package domain;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,14 +32,16 @@ public class InvoiceRow implements Serializable {
     String description;
 
     @ManyToOne
-    Invoice invoiceParent;
+    Invoice invoice;
+    
     public InvoiceRow() {
     }
 
-    public InvoiceRow(BigInteger id, double price, String description) {
+    public InvoiceRow(BigInteger id, double price, String description, Invoice invoice) {
         this.id = id;
         this.price = price;
         this.description = description;
+        this.invoice = invoice;
     }
 
     public BigInteger getId() {
@@ -64,6 +67,15 @@ public class InvoiceRow implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+    
     
     
 }

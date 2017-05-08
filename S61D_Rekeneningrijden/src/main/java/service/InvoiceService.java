@@ -9,6 +9,7 @@ import dao.InvoiceDAO;
 import dao.InvoiceRowDAO;
 import domain.Driver;
 import domain.Invoice;
+import factory.InvoiceTransmitter;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -23,6 +24,8 @@ public class InvoiceService {
     InvoiceDAO invoiceDao;
     @Inject
     InvoiceRowDAO invoiceRowDao;
+    @Inject
+    InvoiceTransmitter invoiceTransmitter;
     
     public List<Invoice> getInvoices(Driver driver){
         List<Invoice> invoices;
@@ -40,6 +43,8 @@ public class InvoiceService {
     public void invoicePaid(Invoice invoice){
         invoice.setPaid(true);
         invoiceDao.invoicePaid(invoice);
+        invoiceTransmitter.SendPayment(invoice);
+        
     }
 
     public Invoice createInvoice(Invoice invoice) {

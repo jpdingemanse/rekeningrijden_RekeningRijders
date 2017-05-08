@@ -22,6 +22,7 @@ import { Driver } from "app/domain/driver";
 import { BeaconService } from "app/rest/beacon.Service";
 import { VehicleService } from "app/rest/vehicle.Service";
 import { DriverService } from "app/rest/driver.Service";
+import { LoginService } from 'app/global/login.Service'
 
 @Component({
   selector: 'app-root',
@@ -61,7 +62,7 @@ export class RoutePageComponent {
 
 
   //TODO set driver from logged in user
-  driver = new Driver(1, "", "", "", "", "", "", "", "", "");
+  driver : Driver;
   currentLicencePlate: string
   currentSelectedDate: string
   currentSelectedVanDate: string
@@ -96,8 +97,8 @@ export class RoutePageComponent {
 
   }
 
-  constructor(private movementService: BeaconService, private vehicleService: VehicleService, private driverService: DriverService) {
-
+  constructor(private movementService: BeaconService, private vehicleService: VehicleService, private driverService: DriverService, private loginService: LoginService) {
+    this.driver = this.loginService.loginUser;
   }
 
   onChangeLicensePlate(newObj) {
@@ -108,8 +109,7 @@ export class RoutePageComponent {
         if (result.length != 0) {
           this.nothingErrorMessage =  " "
             this.allMovementsList = result
-          //    this.allMovementsList = [];
-          // this.allMovementsList.push(result[1])
+
            console.log(this.allMovementsList)
          } else {
             this.nothingErrorMessage = "nothing found for this filter"

@@ -9,7 +9,7 @@ import { Request } from 'app/domain/request';
 @Injectable()
 export class VehicleService {
     private url = "http://192.168.24.46:8080/S61D_Rekeneningrijden/api/Vehicle/";
-    private localurl = "http://localhost:18410/S61D_Rekeneningrijden/api/Vehicle/";
+    private localurl = "http://localhost:19111/S61D_Rekeneningrijden/api/Vehicle/";
 
     constructor(private http: Http) { }
 

@@ -1,38 +1,124 @@
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
-<div class="mainbody container-fluid">
+<!--<input id="datePicker" type="date" [(ngModel)]=currentSelectedDate/>-->
+<table id="mytable1" class="table table-bordred table-striped">
+            <thead>
+                <th>Select the date and your licenceplate: </th>
+            </thead>
+        </table>
 
-    <div class="row">
-        <div class="navbar-wrapper">
-            <div class="container-fluid">
-                <navbar-Top></navbar-Top>
-            </div>
-        </div>
-        <div style="padding-top:50px;"> </div>
-        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-            <div class="panel panel-default">
-                <navbar-Left></navbar-Left>
-            </div>
-        </div>
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">-->
-            <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
+<input id="datePicker" type="date" [ngModel]="currentSelectedDate" asp-format="{yyyy-MM-dd}" (ngModelChange)="datechange($event)"
+    value="{{this.currentSelectedDate | date: 'yyyy-MM-dd'}}" />
 
-                <sebm-google-map-polyline>
-
-                    <sebm-google-map-polyline-point *ngFor="let m of movementList; let i = index" [latitude]="m.lat" [longitude]="m.lng">
-                    </sebm-google-map-polyline-point>
-                </sebm-google-map-polyline>
+<select [ngModel]="selectedVehicle" (ngModelChange)="onChangeLicensePlate($event)" name="vehicleView">
+            <option [ngValue]="t" *ngFor="let t of vehicleList" >{{t.licensePlate}}</option>
+        </select>
+        <br>
+    <label >
+                    <font color="Orange">{{nothingErrorMessage}}</font>
+                </label>
+<div class="col-md-12">
+    <div class="table-responsive">
 
 
 
-            </sebm-google-map>
-        <!--</div>
+
+        <table id="mytable" class="table table-bordred table-striped">
+            <thead>
+                <th>Datum</th>
+                <th>Kenteken</th>
+            </thead>
+            <tbody>
+                <td>{{currentSelectedDate | date: 'dd-MM-yyyy'}}</td>
+                <td>{{currentLicencePlate}}</td>
+            </tbody>
+
+        </table>
     </div>
-</div>-->
-<!--<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="15">
-                <sebm-google-map-polyline>
-                    *ngFor="let m of markers; let i = index"
-                    <sebm-google-map-polyline-point [latitude]="m.lat" [longitude]="m.long">
-                    </sebm-google-map-polyline-point>
-                </sebm-google-map-polyline>
-        </sebm-google-map>-->
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
+            <sebm-google-map-polyline>
+
+                <sebm-google-map-polyline-point *ngFor="let m of allMovementsList; " [latitude]="m.latitude" [longitude]="m.longitude">
+                </sebm-google-map-polyline-point>
+            </sebm-google-map-polyline>
+
+        </sebm-google-map>
+    </div>
+
+
+
+    <div class="col-md-12">
+
+        <!--<div class="panel panel-default">
+        </div>
+        <br>
+        <div class="panel-body">
+            <h2 class="panel-title pull-left" style="font-size:30px;">Tarief calculatie voor {{currentLicencePlate}}:</h2>
+        </div>-->
+<br>
+<table id="mytable2" class="table table-bordred table-striped">
+            <thead>
+                <th>Bereken afstand voor {{currentLicencePlate}} </th>
+            </thead>
+            <tbody>
+                <td>    
+                </td>
+            </tbody>
+        </table>
+
+        <table id="mytable3" class="table table-bordred table-striped">
+            <thead>
+                <th>Van datum</th>
+                <th>Tot datum</th>
+            </thead>
+            <tbody>
+                <td>
+                    <input id="datePickerVan" type="date" [ngModel]="currentSelectedVanDate" asp-format="{yyyy-MM-dd}" (ngModelChange)="vandatechange($event)"
+                        value="{{this.currentSelectedVanDate | date: 'yyyy-MM-dd'}}" />
+                </td>
+                <td>
+                    <input id="datePickerTot" type="date" [ngModel]="currentSelectedTotDate" asp-format="{yyyy-MM-dd}" (ngModelChange)="totdatechange($event)"
+                        value="{{this.currentSelectedTotDate | date: 'yyyy-MM-dd'}}" />
+                </td>
+            </tbody>
+
+        </table>
+         <label >
+                    <font color="red">{{dateErrorMessage}}</font>
+                </label>
+
+
+        <button class="btn btn-primary btn-xs" (click)="onclickCalculate(tbNieuw.value)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Bereken afstand</button>
+<br>
+<br>
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table id="mytable" class="table table-bordred table-striped">
+                            <thead>
+                                <th>Regio</th>
+                                <th>Kenteken</th>
+                                <th>AfstandType</th>
+                                <th>Afstand</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let t of rateList">
+                                    <td>{{t.region}}</td>
+                                    <td>{{t.licencePlate}}</td>
+                                    <td>KM</td>
+                                    <td>
+                                        <input #tbNieuw type="text" placeholder="nieuw" />
+                                        <button class="btn btn-primary btn-xs" (click)="onclickSelectedRate(t, tbNieuw.value)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

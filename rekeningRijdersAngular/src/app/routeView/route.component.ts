@@ -1,38 +1,12 @@
 import {
   Component,
-  NgModule,
-  OnInit 
+  NgModule
 } from '@angular/core';
-
-import { BeaconService } from './../rest/beacon.Service';
-import { Beacon } from './../domain/beacon';
-
-@Component({
-  selector: 'route-page',
-  templateUrl: './route.html',
-  styleUrls: ['./../app.component.css']
-    
-//   template: `
-  
-// `
-})
-export class RoutePageComponent implements OnInit {
-   movementList : Beacon[];
-    selectedMovement : Beacon;
-        ngOnInit(): void {
-            this.movementService.GetMovementsPerIcan('123')
-                            .then(value => this.movementList = value)
-                            .then(() => console.log(this.movementList))
-        }
-     
-    constructor(private movementService : BeaconService){}
-    
-}
 
 import {
   BrowserModule
 } from '@angular/platform-browser';
-
+import * as moment from 'moment';
 import {
   AgmCoreModule
 } from 'angular2-google-maps/core';
@@ -40,88 +14,154 @@ import {
 
 
 
+import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 
-export class App {
+import { Beacon } from "app/domain/beacon";
+import { Vehicle } from "app/domain/vehicle";
+import { Driver } from "app/domain/driver";
+import { BeaconService } from "app/rest/beacon.Service";
+import { VehicleService } from "app/rest/vehicle.Service";
+import { DriverService } from "app/rest/driver.Service";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: '../app.component.html'
+})
+export class AppComponent {
+  date: DateModel;
+  options: DatePickerOptions;
+
+  constructor() {
+    this.options = new DatePickerOptions();
+
+  }
+}
+
+
+@Component({
+  selector: 'route-page',
+  templateUrl: 'route.html',
+  styleUrls: ['../app.component.css'],
+})
+export class RoutePageComponent {
   // google maps zoom level
-  zoom: number = 8;
-  
+  zoom: number = 10;
+
   // initial center position for the map
-  lat: number = 52.673858;
-  lng: number = 4.815982;
-  
+  lat: number = 51.562959;
+  lng: number = 5.065212;
+
+
+
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
+  vehicleList: Vehicle[];
+  kentekenList: String[];
 
-  
-  markerDragEnd(m: marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
+
+  //TODO set driver from logged in user
+  driver = new Driver(1, "", "", "", "", "", "", "", "", "");
+  currentLicencePlate: string
+  currentSelectedDate: string
+  currentSelectedVanDate: string
+  currentSelectedTotDate: string
+  allMovementsList: Beacon[];
+  selectedVehicle: Vehicle
+  dateErrorMessage: string
+  nothingErrorMessage: string
+  //TODO SET DATE FROM datepicker
+  selectedDate: Date = new Date();
+
+  selectedMovement: Beacon;
+  ngOnInit(): void {
+
+    //this.currentSelectedDate = new Date().toDateString();
+    this.currentSelectedDate = moment(new Date()).format("DD-MM-YYYY").toString();
+    this.currentSelectedVanDate = moment(new Date()).format("DD-MM-YYYY").toString();
+    this.currentSelectedTotDate = moment(new Date()).format("DD-MM-YYYY").toString();
+    if (this.driver != null) {
+      this.vehicleService.getVehicleById(this.driver.id)
+        .then(value => this.vehicleList = value)
+        .then(() => this.selectedVehicle = this.vehicleList[0])
+        .then(() => this.onChangeLicensePlate(this.selectedVehicle))
+
+
+    } else {
+      console.log("driver is null")
+    }
+
+
+
+
   }
 
-  movementList : Beacon[];
-    selectedMovement : Beacon;
-        ngOnInit(): void {
-            this.movementService.GetMovementsPerIcan('123')
-                            .then(value => this.movementList = value)
-                            .then(() => console.log(this.movementList))
-        }
-     
-    constructor(private movementService : BeaconService){}
-  
-  markers: marker[] = [
-	  {
-		  lat: 52.673858,
-		  lng: 4.815982,
-	  },
-	  {
-		  lat: 52.373858,
-		  lng: 4.215982,
-	  },
-	  {
-		  lat: 52.723858,
-		  lng: 4.895982,
-	  }
-  ]
-}
+  constructor(private movementService: BeaconService, private vehicleService: VehicleService, private driverService: DriverService) {
 
+  }
+
+  onChangeLicensePlate(newObj) {
+    this.selectedVehicle = newObj;
+    this.currentLicencePlate = this.selectedVehicle.licensePlate
+    this.movementService.GetMovementsPerIcan(this.selectedVehicle.licensePlate, this.currentSelectedDate)
+      .then(result => {
+        if (result.length != 0) {
+          this.nothingErrorMessage =  " "
+            this.allMovementsList = result
+          //    this.allMovementsList = [];
+          // this.allMovementsList.push(result[1])
+           console.log(this.allMovementsList)
+         } else {
+            this.nothingErrorMessage = "nothing found for this filter"
+        }
+      })
+
+
+  }
+
+  datechange(newValue) {
+    this.currentSelectedDate = newValue;
+    this.onChangeLicensePlate(this.selectedVehicle)
+  }
+  vandatechange(newValue) {
+    this.currentSelectedVanDate = newValue;
+  }
+  totdatechange(newValue) {
+    this.currentSelectedTotDate = newValue;
+  }
+
+  onclickCalculate(newValue) {
+    var d1 = Date.parse(this.currentSelectedVanDate);
+    var d2 = Date.parse(this.currentSelectedTotDate);
+    if (d1 > d2) {
+      this.dateErrorMessage = "Can't calculate this dates"
+    } else {
+      this.dateErrorMessage = ""
+    }
+      
+  }
+
+  markerDragEnd(m: marker, $event: MouseEvent) {
+    console.log('dragEnd', m, $event);
+
+  }
+
+  markers: marker[] = [
+
+    { lat: 51.562959, lng: 5.065212, }
+
+  ]
+
+}
 // just an interface for type safety.
 interface marker {
-	lat: number;
-	lng: number;
+  lat: number;
+  lng: number;
 }
 
 @NgModule({
-  imports: [ BrowserModule, AgmCoreModule.forRoot() ],
-  declarations: [ App ],
-  bootstrap: [ App ]
+  imports: [BrowserModule, AgmCoreModule.forRoot()],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
-
-
-//EXAMPLE TO USE A LIST WITH LATS AND LONGS
-// export class MyMapCmp {
-//   lat: number = 0;
-//   lng: number = 0;
-//   zoom: number = 10;
-//   paths: Array<LatLngLiteral> = [
-//     { lat: 0,  lng: 10 },
-//     { lat: 0,  lng: 20 },
-//     { lat: 10, lng: 20 },
-//     { lat: 10, lng: 10 },
-//     { lat: 0,  lng: 10 }
-//   ]
-//   // Nesting paths will create a hole where they overlap;
-//   nestedPaths: Array<Array<LatLngLiteral>> = [[
-//     { lat: 0,  lng: 10 },
-//     { lat: 0,  lng: 20 },
-//     { lat: 10, lng: 20 },
-//     { lat: 10, lng: 10 },
-//     { lat: 0,  lng: 10 }
-//   ], [
-//     { lat: 0, lng: 15 },
-//     { lat: 0, lng: 20 },
-//     { lat: 5, lng: 20 },
-//     { lat: 5, lng: 15 },
-//     { lat: 0, lng: 15 }
-//   ]]
-// }
+export class AppModule { }

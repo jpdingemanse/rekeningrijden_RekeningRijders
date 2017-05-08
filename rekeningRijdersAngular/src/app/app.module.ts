@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import {Ng2DropdownModule } from "ng2-material-dropdown";
+// import {Ng2SelectModule } from "ng2-material-select";
 
 import { Routing } from './route/routing.component';
 
@@ -40,6 +42,8 @@ import { DatePickerModule } from 'ng2-datepicker';
     InvoicePageComponent
   ],
   imports: [
+    // Ng2SelectModule,
+     Ng2DropdownModule,
     DatePickerModule,
     BrowserModule,
     HttpModule,

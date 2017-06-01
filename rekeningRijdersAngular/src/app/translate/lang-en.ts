@@ -39,5 +39,6 @@ export const LANG_EN_TRANS = {
     'AfstandType': 'Distancetype',
     'Afstand': 'Distance',
     'Login': 'Login',
+    'Annuleren': 'Cancel'
 
 };

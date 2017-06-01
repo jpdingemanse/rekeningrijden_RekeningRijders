@@ -39,4 +39,5 @@ export const LANG_ZH_TRANS = {
     'AfstandType': '你好，世界',
     'Afstand': '你好，世界',
     'Login': '你好，世界',
+    'Annuleren': '你世界'
 };

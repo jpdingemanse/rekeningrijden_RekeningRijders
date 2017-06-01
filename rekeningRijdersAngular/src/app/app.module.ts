@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-import {Ng2DropdownModule } from "ng2-material-dropdown";
+// import {Ng2DropdownModule } from "ng2-material-dropdown";
 // import {Ng2SelectModule } from "ng2-material-select";
 
 import { Routing } from './route/routing.component';
@@ -44,7 +44,7 @@ import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService } from './transl
   ],
   imports: [
     // Ng2SelectModule,
-     Ng2DropdownModule,
+    //  Ng2DropdownModule,
     DatePickerModule,
     BrowserModule,
     HttpModule,

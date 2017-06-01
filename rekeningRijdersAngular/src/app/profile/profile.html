@@ -2,27 +2,27 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h1 class="panel-title" style="font-size:30px; text-align: center">Profiel gegevens</h1>
+                <h1 class="panel-title" style="font-size:30px; text-align: center">{{'Profiel gegevens' | translate}}</h1>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-body">
                 <form class="form-">
-                    <label>Naam</label>
+                    <label>{{'Naam' | translate}}</label>
                     <input type="text" class="form-control" id="First_name" value="{{profile.name}}">
-                    <label>Achternaam</label>
+                    <label>{{'Achternaam' | translate}}</label>
                     <input type="text" class="form-control" id="Last_name" value="{{profile.lastname}}">
-                    <label>Gebruikernaam</label>
+                    <label>{{'Gebruikernaam' | translate}}</label>
                     <input type="text" class="form-control" id="User_name" value="{{profile.username}}">
-                    <label>Wachtwoord</label>
+                    <label>{{'Wachtwoord' | translate}}</label>
                     <input type="password" class="form-control" id="Password" value="{{profile.password}}">
-                    <label>Phonenumber</label>
+                    <label>{{'Mobiel nummer' | translate}}</label>
                     <input type="text" class="form-control" id="Phone_number" value="{{profile.phoneNumber}}">
-                    <label>PostCode</label>
+                    <label>{{'PostCode' | translate}}</label>
                     <input type="text" class="form-control" id="Postal" value="{{profile.postalCode}}">
-                    <label>Huisnummer</label>
+                    <label>{{'Huisnummer' | translate}}</label>
                     <input type="text" class="form-control" id="Houser_number" value="{{profile.houseNumber}}">
-                    <label>Stad</label>
+                    <label>{{'Stad' | translate}}</label>
                     <input type="text" class="form-control" id="City" value="{{profile.city}}">
                 </form>
             </div>
@@ -30,15 +30,15 @@
         <hr>
         <div class="panel panel-default">
             <div class="panel-body pull-right">
-                <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> Cancel</button>
-                <button class="btn btn-primary"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Profile wijzigen</button>
+                <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> {{'Annuleren' | translate}}</button>
+                <button class="btn btn-primary"><i class="fa fa-fw fa-check" aria-hidden="true"></i> {{'Profiel wijzigen' | translate}}</button>
             </div>
         </div>
     </div>
     <div class="col-lg-3">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h1 class="panel-title" style="font-size:30px; text-align: center">Voertuigen</h1>
+                <h1 class="panel-title" style="font-size:30px; text-align: center">{{'Voertuigen' | translate}}</h1>
             </div>
         </div>
         <div class="panel panel-default" *ngFor="let v of vehicle">
@@ -51,13 +51,13 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <h1 class="panel-title" style="font-size:30px; text-align: center">Aanvraag</h1>
+                <h1 class="panel-title" style="font-size:30px; text-align: center">{{'Aanvraag' | translate}}</h1>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-body">
                 <input #licensePlate type="text"/>
-                <button class="btn btn-primary pull-right" (click)="onclickNewRequest(licensePlate.value)">Aanvragen </button>
+                <button class="btn btn-primary pull-right" (click)="onclickNewRequest(licensePlate.value)">{{'Aanvragen' | translate}}</button>
             </div>
         </div>
         <div class="form-group" style="margin-top: 10px;">

@@ -7,13 +7,13 @@ import { Invoice } from './../domain/invoice';
 
 @Injectable()
 export class InvoiceService {
-    private url = "http//192.168.24.43:8080/S61D_RekeningRijders/api/Invoice/";
+    private url = "http://192.168.24.43:8080/S61D_Rekeneningrijden/api/Invoice/";
     private localurl = "http://localhost:19111/S61D_Rekeneningrijden/api/Invoice/"
 
     constructor(private http : Http){}
 
     GetInvoices(id: Number): Promise<Invoice []> {
-        return this.http.get(this.url + "GetInvoices/"+ id)
+        return this.http.get(this.localurl + "GetInvoices/"+ id)
                         .toPromise()
                         .then(this.extractData);
     }
@@ -21,7 +21,7 @@ export class InvoiceService {
     SetInvoicePaid(id: any) : Promise<Invoice>{
         var header = new Headers();
         header.append('Content-Type', 'application/json');
-        return this.http.put(this.url + 'InvoicePaid', JSON.stringify(id), {headers: header})
+        return this.http.put(this.localurl + 'InvoicePaid', JSON.stringify(id), {headers: header})
                         .toPromise()
                         .then(this.extractData);
     }

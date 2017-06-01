@@ -27,7 +27,7 @@ import { VehicleService } from './rest/vehicle.Service';
 
 import { LoginService } from './global/login.Service';
 import { DatePickerModule } from 'ng2-datepicker';
-
+import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService } from './translate'
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { DatePickerModule } from 'ng2-datepicker';
     NavbarTopComponent,
     NavbarLeftComponent,
     RoutePageComponent,
+    TranslatePipe,
     HomePageComponent,
     ProfileComponent,
     RegisterComponent,
@@ -58,7 +59,9 @@ import { DatePickerModule } from 'ng2-datepicker';
     DriverService,
     LoginService,
     InvoiceService,
-    VehicleService
+    VehicleService,
+    TRANSLATION_PROVIDERS,
+    TranslateService
 
   ],
   bootstrap: [AppComponent]

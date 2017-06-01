@@ -13,7 +13,7 @@ import {
 
 
 
-
+import { TranslateService } from './../translate';
 import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 
 import { Beacon } from "app/domain/beacon";
@@ -53,6 +53,9 @@ export class RoutePageComponent {
   lng: number = 5.065212;
 
 
+  public translatedText: string;
+  public supportedLanguages: any[];
+
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -62,25 +65,33 @@ export class RoutePageComponent {
 
 
   //TODO set driver from logged in user
-  driver : Driver;
+  tempLat: number
+
+  tempLong: number
+  driver: Driver;
   currentLicencePlate: string
   currentSelectedDate: string
   currentSelectedVanDate: string
   currentSelectedTotDate: string
   allMovementsList: Beacon[];
+  allMovementsPeriodList: Beacon[];
   selectedVehicle: Vehicle
   dateErrorMessage: string
   nothingErrorMessage: string
+  nothingPeriodErrorMessage: string
+  regio: string
+  afstand: string
   //TODO SET DATE FROM datepicker
   selectedDate: Date = new Date();
 
   selectedMovement: Beacon;
   ngOnInit(): void {
-
+    this.tempLat = 0
+    this.tempLong = 0
     //this.currentSelectedDate = new Date().toDateString();
-    this.currentSelectedDate = moment(new Date()).format("DD-MM-YYYY").toString();
-    this.currentSelectedVanDate = moment(new Date()).format("DD-MM-YYYY").toString();
-    this.currentSelectedTotDate = moment(new Date()).format("DD-MM-YYYY").toString();
+    // this.currentSelectedDate = moment(new Date()).format("DD-MM-YYYY").toString();
+    // this.currentSelectedVanDate = moment(new Date()).format("DD-MM-YYYY").toString();
+    // this.currentSelectedTotDate = moment(new Date()).format("DD-MM-YYYY").toString();
     if (this.driver != null) {
       this.vehicleService.getVehicleById(this.driver.id)
         .then(value => this.vehicleList = value)
@@ -91,6 +102,7 @@ export class RoutePageComponent {
     } else {
       console.log("driver is null")
     }
+
 
 
 
@@ -107,12 +119,13 @@ export class RoutePageComponent {
     this.movementService.GetMovementsPerIcan(this.selectedVehicle.licensePlate, this.currentSelectedDate)
       .then(result => {
         if (result.length != 0) {
-          this.nothingErrorMessage =  " "
-            this.allMovementsList = result
+          this.nothingErrorMessage = " "
+          this.allMovementsList = result
 
-           console.log(this.allMovementsList)
-         } else {
-            this.nothingErrorMessage = "nothing found for this filter"
+          console.log(this.allMovementsList)
+        } else {
+          this.nothingErrorMessage = "nothing found for this filter"
+          this.allMovementsList = []
         }
       })
 
@@ -125,20 +138,63 @@ export class RoutePageComponent {
   }
   vandatechange(newValue) {
     this.currentSelectedVanDate = newValue;
+    this.onclickCalculate()
   }
   totdatechange(newValue) {
     this.currentSelectedTotDate = newValue;
+    this.onclickCalculate()
   }
 
-  onclickCalculate(newValue) {
+  onclickCalculate() {
+    console.log("calculating...")
     var d1 = Date.parse(this.currentSelectedVanDate);
     var d2 = Date.parse(this.currentSelectedTotDate);
-    if (d1 > d2) {
+     if (d1 == null || d2 == null ) {
       this.dateErrorMessage = "Can't calculate this dates"
     } else {
       this.dateErrorMessage = ""
     }
-      
+    if (d1 > d2 ) {
+      this.dateErrorMessage = "Can't calculate this dates"
+    } else {
+      this.dateErrorMessage = ""
+    }
+    this.movementService.GetMovementsPerPeriod(this.selectedVehicle.licensePlate, this.currentSelectedVanDate, this.currentSelectedTotDate)
+      .then(result => {
+        if (result.length != 0) {
+          this.nothingErrorMessage = " "
+          this.allMovementsPeriodList = result
+
+          console.log(this.allMovementsPeriodList)
+
+
+          this.allMovementsPeriodList.forEach(element => {
+            if (this.tempLat != 0 && this.tempLong != 0) {
+              //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+              var R = 6371; // km
+              var dLat = toRad(this.tempLat - element.lat);
+              var dLon = toRad(this.tempLong - element.lng);
+              var lat1 = toRad(element.lat);
+              var lat2 = toRad(this.tempLat);
+
+              var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+              var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+              var d = R * c;
+
+              this.afstand = this.afstand + d;
+
+              this.tempLat = element.lat
+              this.tempLong = element.lng
+            } else {
+              this.tempLat = element.lat
+              this.tempLong = element.lng
+            }
+          });
+        } else {
+          this.nothingPeriodErrorMessage = "nothing found for this filter"
+        }
+      })
   }
 
   markerDragEnd(m: marker, $event: MouseEvent) {
@@ -158,6 +214,11 @@ interface marker {
   lat: number;
   lng: number;
 }
+// Converts numeric degrees to radians
+function toRad(Value) {
+  return Value * Math.PI / 180;
+}
+
 
 @NgModule({
   imports: [BrowserModule, AgmCoreModule.forRoot()],

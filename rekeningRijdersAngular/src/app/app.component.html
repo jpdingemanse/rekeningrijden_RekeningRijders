@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
 <div class="mainbody container-fluid">
+
     <div class="row">
         <div class="navbar-wrapper">
             <div class="container-fluid">
@@ -10,24 +11,36 @@
         <div style="padding-top:50px;"> </div>
         <div *ngIf="loginService.loginStatus">
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-                    <navbar-Left></navbar-Left>
+                <navbar-Left></navbar-Left>
             </div>
             <div class="col-lg-9 col-md-9 col-xs-9">
                 <router-outlet></router-outlet>
             </div>
         </div>
         <div *ngIf="!loginService.loginPage">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ></div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <login-page></login-page>
+                
+               <!-- </div>
+                <div style="margin-top: 20px">
+                    
+                    <p>
+                        Translate With Pipe: <strong>{{ 'hello world' | translate }}</strong>
+                    </p>
+                    <p>
+                        Translate with Service: <strong>{{ translatedText }}</strong>
+                    </p>
+                </div>-->
             </div>
         </div>
         <div *ngIf="loginService.registerPage">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ></div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <register-page></register-page>
+
+
                 <!--<route-page> </route-page>-->
             </div>
         </div>
     </div>
-   

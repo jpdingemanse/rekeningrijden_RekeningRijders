@@ -1,5 +1,5 @@
 <div class="panel-heading">
-    <h3 class="panel-title">Log in</h3>
+    <h3 class="panel-title">Login</h3>
 </div>
 <div class="panel-body">
     <form role="form">
@@ -11,7 +11,7 @@
                 <input #passwordInput class="form-control" placeholder="Wachtwoord" name="password" type="password" value="">
             </div>
                 <a (click)="register()">
-                    <h6>Registeren</h6>
+                    <h6>{{ 'Register' | translate}}</h6>
                 </a>
             <button class="btn btn-sm btn-success pull-right" (click)="login(usernameInput.value, passwordInput.value)">Login</button>
             <div class="form-group" style="margin-top: 10px;">

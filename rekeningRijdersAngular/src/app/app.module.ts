@@ -28,7 +28,7 @@ import { InvoiceRowService } from './rest/invoiceRow.Service';
 
 import { LoginService } from './global/login.Service';
 import { DatePickerModule } from 'ng2-datepicker';
-
+import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService } from './translate'
 
 @NgModule({
   declarations: [
@@ -37,14 +37,13 @@ import { DatePickerModule } from 'ng2-datepicker';
     NavbarTopComponent,
     NavbarLeftComponent,
     RoutePageComponent,
+    TranslatePipe,
     HomePageComponent,
     ProfileComponent,
     RegisterComponent,
     InvoicePageComponent
   ],
   imports: [
-    // Ng2SelectModule,
-    //  Ng2DropdownModule,
     DatePickerModule,
     BrowserModule,
     HttpModule,
@@ -60,7 +59,9 @@ import { DatePickerModule } from 'ng2-datepicker';
     LoginService,
     InvoiceService,
     VehicleService,
-    InvoiceRowService
+    InvoiceRowService,
+    TRANSLATION_PROVIDERS,
+    TranslateService
 
   ],
   bootstrap: [AppComponent]

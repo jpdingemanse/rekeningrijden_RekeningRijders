@@ -4,18 +4,8 @@
             <div class="panel-body">
                 <h2 class="panel-title" style="font-size:30px; text-align: center;">Factuur per maand</h2>
             </div>
+
         </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h2 class="panel-title" style="font-size:30px; text-align: center;">Factuur details</h2>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-6">
         <div class="panel panel-default" *ngFor="let inv of invoiceList">
             <div class="panel-body">
                 <div class="row">
@@ -38,6 +28,12 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-body">
+                <h2 class="panel-title" style="font-size:30px; text-align: center;">Factuur details</h2>
+            </div>
+        </div>
+
+        <div class="panel panel-default" style="margin-top: 10px;">
+            <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-4">
                         <label for="First_name">Totaal prijs</label>
@@ -51,6 +47,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="panel panel-default" *ngFor="let invR of invoiceRowList">
             <div class="panel-body">
 
@@ -73,4 +71,5 @@
             </div>
         </div>
     </div>
+
 </div>

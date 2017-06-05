@@ -1,0 +1,43 @@
+// lang-zh.ts
+
+export const LANG_ZH_NAME = 'zh';
+
+export const LANG_ZH_TRANS = {
+    'hello world': '你好，世界',
+    'Registreer': '你好，世界',
+    'Maand': '你好，世界',
+    'Prijs': '你好，世界',
+    'Omschrijving': '你好，世界',
+    'Profiel': '你好，世界',
+    'Facturen': '你好，世界',
+    'Route': '你好，世界',
+    'Uitloggen': '你好，世界',
+    'Rekening Rijder': '你好，世界 你好，世界',
+    'Profiel gegevens': '你好，世界 你好，世界',
+    'Naam': '你好，世界',
+    'Achternaam': '你好，世界 你好，世界',
+    'Gebruikernaam': '你好，世界',
+    'Wachtwoord': '你好，世界',
+    'Mobiel nummer"': '你好，世界 你好，世界',
+    'PostCode': '你好，世界',
+    'Huisnummer': '你好，世界 你好，世界',
+    'Stad': '你好，世界',
+    'Profiel wijzigen': '你好，世界 你好，世界',
+    'Voertuigen': '你好，世界',
+    'Aanvraag': '你好，世界',
+    'Aanvragen': '你好，世界',
+    'Bevestig Wachtwoord': '你好，世界 你好，世界',
+    'Nieuw account': 'New 你好，世界',
+    'Bereken afstand voor': '你好，世界 你好，世界 你好，世界',
+    'Selecteer de datum en het kenten:': '你好，世界 你好，世界 你好，世界 你好，世界 y你好，世界',
+    'Datum': '你好，世界',
+    'Kenteken': '你好，世界',
+    'Van datum': '你好，世界 你好，世界',
+    'Tot datum': '你好，世界 你好，世界',
+    'Bereken afstand': '你好，世界 你好，世界',
+    'Regio': '你好，世界',
+    'AfstandType': '你好，世界',
+    'Afstand': '你好，世界',
+    'Login': '你好，世界',
+    'Annuleren': '你世界'
+};

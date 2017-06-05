@@ -51,11 +51,9 @@ export class InvoicePageComponent implements OnInit {
                                     }
                                 })
                                 .then(() => {
-                                    if(this.totalPrice != 0){
                                         this.paypalButtonStatus = true;
                                         this.price = this.totalPrice.toString()
                                         this.paymentFunction(this.price)
-                                    }
                                 })
     }
     paymentFunction(value : string){

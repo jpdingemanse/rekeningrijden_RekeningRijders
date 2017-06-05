@@ -1,28 +1,28 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        <h1 class="panel-title pull-left" style="font-size:30px;">Profiel gegevens</h1>
+        <h1 class="panel-title pull-left" style="font-size:30px;"> {{'Profiel gegevens' | translate}}</h1>
     </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-body">
         <form class="form-">
-            <label>Naam</label>
+            <label>{{'Naam' | translate}}</label>
             <input #name type="text" class="form-control" id="First_name">
-            <label>Achternaam</label>
+            <label>{{'Achternaam' | translate}}</label>
             <input #lastname type="text" class="form-control" id="Last_name">
-            <label>Gebruikernaam</label>
+            <label>{{'Gebruikernaam' | translate}}</label>
             <input #username type="text" class="form-control" id="User_name">
-            <label>Wachtwoord</label>
+            <label>{{'Wachtwoord' | translate}}</label>
             <input #password type="password" class="form-control" id="Password">
-            <label>Bevestig Wachtwoord</label>
+            <label>{{'Bevestig Wachtwoord' | translate}}</label>
             <input #conformation type="password" class="form-control" id="ConfirmPassword">
-            <label>Phonenumber</label>
+            <label>{{'Mobiel nummer' | translate}}</label>
             <input #phonenumber type="text" class="form-control" id="Phone_number">
-            <label>PostCode</label>
+            <label>{{'PostCode' | translate}}</label>
             <input #postal type="text" class="form-control" id="Postal">
-            <label>Huisnummer</label>
+            <label>{{'Huisnummer' | translate}}</label>
             <input #housenumber type="text" class="form-control" id="Houser_number">
-            <label>Stad</label>
+            <label>{{'Stad' | translate}}</label>
             <input #city type="text" class="form-control" id="City">
         </form>
     </div>
@@ -36,7 +36,7 @@
 <div class="panel panel-default">
 
     <div class="panel-body pull-right">
-        <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> Cancel</button>
-        <button class="btn btn-success" (click)="createNewProfile(name.value, lastname.value,username.value ,password.value, conformation.value, phonenumber.value, postal.value, housenumber.value, city.value)"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Maakt nieuw account </button>
+        <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> {{'Annuleren' | translate}}</button>
+        <button class="btn btn-success" (click)="createNewProfile(name.value, lastname.value,username.value ,password.value, conformation.value, phonenumber.value, postal.value, housenumber.value, city.value)"><i class="fa fa-fw fa-check" aria-hidden="true"></i> {{'Nieuw account'  | translate}}</button>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <!--<input id="datePicker" type="date" [(ngModel)]=currentSelectedDate/>-->
 <table id="mytable1" class="table table-bordred table-striped">
             <thead>
-                <th>Select the date and your licenceplate: </th>
+                <th>{{'Selecteer de datum en het kenten:' | translate }}</th>
             </thead>
         </table>
 
@@ -23,8 +23,8 @@
 
         <table id="mytable" class="table table-bordred table-striped">
             <thead>
-                <th>Datum</th>
-                <th>Kenteken</th>
+                <th>{{'Datum' | translate}}</th>
+                <th>{{'Kenteken' | translate}}</th>
             </thead>
             <tbody>
                 <td>{{currentSelectedDate | date: 'dd-MM-yyyy'}}</td>
@@ -32,7 +32,7 @@
             </tbody>
 
         </table>
-    </div>
+    </div> 
     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
             <sebm-google-map-polyline>
@@ -57,7 +57,7 @@
 <br>
 <table id="mytable2" class="table table-bordred table-striped">
             <thead>
-                <th>Bereken afstand voor {{currentLicencePlate}} </th>
+                <th>{{'Bereken afstand voor' | translate}} {{currentLicencePlate}} </th>
             </thead>
             <tbody>
                 <td>    
@@ -67,8 +67,8 @@
 
         <table id="mytable3" class="table table-bordred table-striped">
             <thead>
-                <th>Van datum</th>
-                <th>Tot datum</th>
+                <th>{{'Van datum' | translate}}</th>
+                <th>{{'Tot datum' | translate}}</th>
             </thead>
             <tbody>
                 <td>
@@ -82,12 +82,15 @@
             </tbody>
 
         </table>
+        <label >
+                    <font color="Orange">{{nothingPeriodErrorMessage}}</font>
+                </label>
          <label >
                     <font color="red">{{dateErrorMessage}}</font>
                 </label>
 
 
-        <button class="btn btn-primary btn-xs" (click)="onclickCalculate(tbNieuw.value)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Bereken afstand</button>
+        <button class="btn btn-primary btn-xs" (click)="onclickCalculate()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{{ 'Bereken afstand' | translate}}</button>
 <br>
 <br>
         <div class="panel panel-default">
@@ -96,20 +99,19 @@
                     <div class="table-responsive">
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
-                                <th>Regio</th>
-                                <th>Kenteken</th>
-                                <th>AfstandType</th>
-                                <th>Afstand</th>
+                                <th>{{'Regio' | translate}}</th>
+                                <th>{{'Kenteken' | translate}}</th>
+                                <th>{{'AfstandType' | translate}}</th>
+                                <th>{{'Afstand' | translate}}</th>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let t of rateList">
-                                    <td>{{Regio}}</td>
-                                    <td>{{t.licencePlate}}</td>
+                                    <td>{{regio}}</td>
+                                    <td>{{currentLicencePlate}}</td>
                                     <td>KM</td>
                                     <td>
-                                        <input #tbNieuw type="text" placeholder="nieuw" />
-                                        <button class="btn btn-primary btn-xs" (click)="onclickSelectedRate(t, tbNieuw.value)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                    </td>
+                                        {{afstand}}
+                                         </td>
                                 </tr>
                             </tbody>
 

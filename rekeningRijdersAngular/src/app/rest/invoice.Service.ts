@@ -9,14 +9,14 @@ import { Invoice } from './../domain/invoice';
 export class InvoiceService {
 
     private url = "http://192.168.24.43:8080/S61D_Rekeneningrijden/api/Invoice/";
-    private localurl = "http://localhost:18410/S61D_Rekeneningrijden/api/Invoice/"
+    private localurl = "http://localhost:19111/S61D_Rekeneningrijden/api/Invoice/"
 
 
 
     constructor(private http : Http){}
 
     GetInvoices(id: Number): Promise<Invoice []> {
-        return this.http.get(this.localurl + "GetInvoices/"+ id)
+        return this.http.get(this.url + "GetInvoices/"+ id)
                         .toPromise()
                         .then(this.extractData);
     }

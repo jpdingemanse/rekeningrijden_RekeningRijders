@@ -18,7 +18,7 @@ export const LANG_EN_TRANS = {
     'Achternaam': 'Last name',
     'Gebruikernaam': 'Username',
     'Wachtwoord': 'Password',
-    'Mobiel nummer"': 'Mobile number',
+    'Mobiel nummer': 'Mobile number',
     'PostCode': 'Zipcode',
     'Huisnummer': 'House number',
     'Stad': 'City',

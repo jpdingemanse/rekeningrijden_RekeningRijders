@@ -45,7 +45,7 @@ public class BeaconResource {
 //            System.out.println(iCan);
 //            return result.get("1");
 
-       return beaconService.getAllRideByIcan(iCan, date+"%" );
+       return beaconService.getAllRideByIcan(iCan, date );
 //            System.out.println(iCan);
 //            return result.get("1");
         
@@ -54,5 +54,25 @@ public class BeaconResource {
         }
         
     }
-    
+    //http://localhost:19111/S61D_Rekeneningrijden/api/Beacon/GetMovementsPerPeriod/12-test-2/2017-06-21/2017-06-22
+    @GET
+    @Path("GetMovementsPerPeriod/{iCan}/{dateFrom}/{dateTo}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Double getMovementPerIcan(@PathParam("iCan")String iCan, @PathParam("dateFrom")String dateFrom, @PathParam("dateTo")String dateTo){
+        try {
+            
+//            Map<String, List<Beacon>> result = beaconService.getAllRideByIcan(iCan);
+//            System.out.println(iCan);
+//            return result.get("1");
+System.out.println(iCan); 
+       //return beaconService.getAllRideByPeriod(iCan, "'"+dateFrom+"%'", "'"+ dateTo+"%'");
+      return beaconService.getAllRideByPeriod(iCan, dateFrom,  dateTo);
+//            System.out.println(iCan);
+//            return result.get("1");
+        
+        }catch (Exception ex){
+            return null;
+        }
+        
+    }
 }

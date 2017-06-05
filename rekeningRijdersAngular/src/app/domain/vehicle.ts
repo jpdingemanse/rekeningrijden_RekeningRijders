@@ -2,6 +2,7 @@ import { Driver } from "app/domain/driver";
 
 export class Vehicle {
     public licensePlate: string;
+    public iCan: string;
     public owner: Driver;
     constructor() { }
 
@@ -10,6 +11,9 @@ export class Vehicle {
     }
     setLicensePlate(licensePlate: string) {
         this.licensePlate = licensePlate;
+    }
+     setICan(iCan: string) {
+        this.iCan = iCan;
     }
     
 }

@@ -27,10 +27,10 @@ import javax.persistence.OneToMany;
 @Entity
 public class Invoice implements Serializable {
     @Id
-    private BigInteger id;
+    private int id;
     private long timestamp;
     private boolean paid;
-    private String maand;
+    private String month;
     
     @ManyToOne
     private Driver driver;
@@ -41,18 +41,18 @@ public class Invoice implements Serializable {
     public Invoice() {
     }
 
-    public Invoice(BigInteger id, long timestamp, boolean paid, String maand) {
+    public Invoice(int id, long timestamp, boolean paid, String maand) {
         this.id = id;
         this.timestamp = timestamp;
         this.paid = paid;
-        this.maand = maand;
+        this.month = maand;
     }
 
-    public BigInteger getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -88,11 +88,13 @@ public class Invoice implements Serializable {
         this.invoiceRows = invoiceRows;
     }
 
-    public String getMaand() {
-        return maand;
+    public String getMonth() {
+        return month;
     }
 
-    public void setMaand(String maand) {
-        this.maand = maand;
+    public void setMonth(String month) {
+        this.month = month;
     }
+
+    
 }

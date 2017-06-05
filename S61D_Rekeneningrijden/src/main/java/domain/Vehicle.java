@@ -6,9 +6,12 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -19,15 +22,18 @@ public class Vehicle implements Serializable{
     @Id
     private String licensePlate;
     
-
     @ManyToOne
     private Driver owner;
+    
+    @OneToMany(mappedBy = "vehicle")
+    private List<InvoiceRow> invoices;
 
     public Vehicle() {
     }
 
     public Vehicle(String licensePlate) {
         this.licensePlate = licensePlate;
+        this.invoices = new ArrayList<>();
     }
 
     public String getLicensePlate() {
@@ -44,6 +50,14 @@ public class Vehicle implements Serializable{
 
     public void setOwner(Driver owner) {
         this.owner = owner;
+    }
+
+    public List<InvoiceRow> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<InvoiceRow> invoices) {
+        this.invoices = invoices;
     }
     
     

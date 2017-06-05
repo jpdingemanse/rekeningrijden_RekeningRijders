@@ -33,7 +33,7 @@ public class InvoiceResource {
     
     @GET
     @Path("GetInvoices/{id}")
-    public List<Invoice> getInvoices(@PathParam("id")int id){
+    public List<Invoice> getInvoicesPerDriver(@PathParam("id")int id){
         Driver i = new Driver();
         i = driverService.getDriver(id);
         List<Invoice> invoices = invoiceService.getInvoices(i);

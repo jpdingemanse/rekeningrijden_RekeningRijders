@@ -21,7 +21,13 @@ public class InvoiceRowDAO {
     @PersistenceContext
     EntityManager em;
     
-    public List<InvoiceRow> getInvoices(Invoice invoice){
-        return (List<InvoiceRow>) em.createNamedQuery("Invoicerow.getInvoiceRows", InvoiceRow.class).setParameter("invoice", invoice).getResultList();
+    public List<InvoiceRow> getInvoicesByInvoiceId(int invoiceId){
+        return (List<InvoiceRow>) em.createNamedQuery("Invoicerow.getInvoiceRows", InvoiceRow.class).setParameter("id", invoiceId).getResultList();
+    }
+    
+    public InvoiceRow createInvoiceRow(InvoiceRow invoiceRow){
+        em.persist(invoiceRow);
+        em.flush();
+        return em.find(InvoiceRow.class, invoiceRow.getId());
     }
 }

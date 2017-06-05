@@ -21,34 +21,38 @@ import javax.persistence.NamedQuery;
  * @author victo
  */
 @NamedQueries({
-    @NamedQuery(name="Invoicerow.getInvoiceRows", query="Select i from InvoiceRow i where i.invoice = :invoice")
+    @NamedQuery(name="Invoicerow.getInvoiceRows", query="Select i from InvoiceRow i where i.invoice.id = :id")
 })
 @Entity
 public class InvoiceRow implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    BigInteger id;
+    int id;
     double price;
     String description;
 
     @ManyToOne
     Invoice invoice;
     
+    @ManyToOne
+    Vehicle vehicle;
+    
+    
     public InvoiceRow() {
     }
 
-    public InvoiceRow(BigInteger id, double price, String description, Invoice invoice) {
+    public InvoiceRow(int id, double price, String description, Invoice invoice) {
         this.id = id;
         this.price = price;
         this.description = description;
         this.invoice = invoice;
     }
 
-    public BigInteger getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -74,6 +78,14 @@ public class InvoiceRow implements Serializable {
 
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
     
     

@@ -30,9 +30,6 @@ public class InvoiceService {
     public List<Invoice> getInvoices(Driver driver){
         List<Invoice> invoices;
         invoices = invoiceDao.getInvoices(driver);
-        for(Invoice i : invoices){
-            i.setInvoiceRows(invoiceRowDao.getInvoices(i));
-        }
         return invoices;
     }
     

@@ -7,6 +7,7 @@ package boundary.bean;
 
 import com.google.gson.Gson;
 import domain.Invoice;
+import domain.InvoiceRow;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.ActivationConfigProperty;
@@ -16,6 +17,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+import service.InvoiceRowService;
 import service.InvoiceService;
 
 /**
@@ -35,6 +37,8 @@ import service.InvoiceService;
 public class MessageBean implements MessageListener {
     @Inject
     InvoiceService is;
+    @Inject
+    InvoiceRowService irs;
     
     public MessageBean() {
     }
@@ -45,8 +49,10 @@ public class MessageBean implements MessageListener {
         System.out.println("Got message (RekeningRijden) " + message);
         TextMessage msg = (TextMessage) message;
         try {
-            Invoice invoice = gson.fromJson(msg.getText(), Invoice.class);
-            is.createInvoice(invoice);
+            InvoiceRow InvoiceRow = gson.fromJson(msg.getText(), InvoiceRow.class);
+            
+            is.createInvoice(InvoiceRow.getInvoice());
+            irs.createNewInvoiceRow(InvoiceRow);
         } catch (JMSException ex) {
             Logger.getLogger(MessageBean.class.getName()).log(Level.SEVERE, null, ex);
         }

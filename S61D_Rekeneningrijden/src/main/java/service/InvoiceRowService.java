@@ -23,4 +23,8 @@ public class InvoiceRowService {
     public List<InvoiceRow> getInvoiceRowByInvoiceId(int id){
         return invoiceRowDao.getInvoicesByInvoiceId(id);
     }
+    
+    public void createNewInvoiceRow(InvoiceRow irs){
+        invoiceRowDao.createInvoiceRow(irs);
+    }
 }

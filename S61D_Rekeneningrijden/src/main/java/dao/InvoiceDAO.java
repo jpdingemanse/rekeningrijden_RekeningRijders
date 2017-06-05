@@ -34,8 +34,13 @@ public class InvoiceDAO {
     }
 
     public Invoice createInvoice(Invoice invoice) {
-        em.persist(invoice);
-        em.flush();
-        return em.find(Invoice.class, invoice.getId());
+        Invoice result = em.find(Invoice.class, invoice.getId());
+        if(result != null){
+            em.persist(invoice);
+            em.flush();
+            return em.find(Invoice.class, invoice.getId());
+        }
+        return result;
+        
     }
 }

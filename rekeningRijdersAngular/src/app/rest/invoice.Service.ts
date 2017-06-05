@@ -17,7 +17,11 @@ export class InvoiceService {
                         .toPromise()
                         .then(this.extractData);
     }
-
+    getInvoicesByDriver(name : any) : Promise<Invoice []> {
+        return this.http.get(this.url + 'GetInvoices/' + name)
+                        .toPromise()
+                        .then(this.extractData);
+    }
     SetInvoicePaid(id: any) : Promise<Invoice>{
         var header = new Headers();
         header.append('Content-Type', 'application/json');

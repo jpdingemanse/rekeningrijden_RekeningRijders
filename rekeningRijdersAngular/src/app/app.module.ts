@@ -24,6 +24,7 @@ import { BeaconService } from './rest/beacon.Service';
 import { DriverService } from './rest/driver.Service';
 import { InvoiceService } from './rest/invoice.Service';
 import { VehicleService } from './rest/vehicle.Service';
+import { InvoiceRowService } from './rest/invoiceRow.Service';
 
 import { LoginService } from './global/login.Service';
 import { DatePickerModule } from 'ng2-datepicker';
@@ -58,7 +59,8 @@ import { DatePickerModule } from 'ng2-datepicker';
     DriverService,
     LoginService,
     InvoiceService,
-    VehicleService
+    VehicleService,
+    InvoiceRowService
 
   ],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { InvoiceRow } from "./invoiceRow"
 
 export class Invoice {
         public id: number;
+        public month: string;
         public timestamp: number;
         public paid: boolean;
         public lat: number;

@@ -1,70 +1,76 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <h1 class="panel-title" style="font-size:30px; align-content: center;">Betaling</h1>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-lg-3"><label for="First_name">Maand</label></div>
-            <div class="col-lg-4"><input type="text" class="form-control" id="First_name" placeholder="John"></div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3"><label for="Last_name">Last name</label></div>
-            <div class="col-lg-4"><input type="text" class="form-control" id="First_name" placeholder="John"></div>
-            <div class="col-lg-3"><div id="paypal-button"></div></div>
-        </div>
-        
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped">
-                        <thead>
-                            <th>Maand</th>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let i of invoices">
-                                <td>{{i.maand}}</td>
-                                <td>{{i.paid}}</td>
-                               <td>
-                            <p data-placement="top" data-toggle="tooltip" title="Invoegen"><button class="btn btn-success btn-xs" (click)="onClickOpenInvoice(i)"><i class="fa fa-car" aria-hidden="true"></i>Details</button></p>
-                        </td>
-                        <td>
-                            <p data-placement="top" data-toggle="tooltip" title="Invoegen"><button class="btn btn-success btn-xs" (click)="onClickInvoicePaid(i)"><i class="fa fa-car" aria-hidden="true"></i>Betaald</button></p>
-                        </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2 class="panel-title" style="font-size:30px; text-align: center;">Factuur per maand</h2>
             </div>
         </div>
     </div>
-
-    <div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped">
-                        <thead>
-                            <th>Prijs</th>
-                            <th>Omschrijving</th>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let ir of invoiceRowss">
-                                <td>{{ir.price}}</td>
-                                <td>{{ir.description}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2 class="panel-title" style="font-size:30px; text-align: center;">Factuur details</h2>
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default" *ngFor="let inv of invoiceList">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-10"></div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary" (click)="onclickShowInvoiceDetails(inv)"><i class="fa fa-info" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-lg-4"><label for="First_name">Maand</label></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{inv.month}}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4"><label for="Last_name">Betaal status</label></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{inv.paid}}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label for="First_name">Totaal prijs</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="First_name" value="{{totalPrice}}">
+                    </div>
+                    <div class="col-lg-2" *ngIf="paypalButtonStatus">
+                        <div id="paypal-button"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" *ngFor="let invR of invoiceRowList">
+            <div class="panel-body">
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-lg-4"><label for="First_name">Id</label></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.id}}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4"><label for="Last_name">Omschrijving</label></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.description}}"></div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-lg-4"><label for="First_name">Prijs</label></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.price}}"></div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-lg-4"><label for="First_name">Auto</label></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.vehicle.licensePlate}}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

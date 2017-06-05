@@ -16,7 +16,7 @@ export class InvoiceService {
     constructor(private http : Http){}
 
     GetInvoices(id: Number): Promise<Invoice []> {
-        return this.http.get(this.localurl + "GetInvoices/"+ id)
+        return this.http.get(this.url + "GetInvoices/"+ id)
                         .toPromise()
                         .then(this.extractData);
     }
@@ -28,7 +28,7 @@ export class InvoiceService {
     SetInvoicePaid(id: any) : Promise<Invoice>{
         var header = new Headers();
         header.append('Content-Type', 'application/json');
-        return this.http.put(this.localurl + 'InvoicePaid', JSON.stringify(id), {headers: header})
+        return this.http.put(this.url + 'InvoicePaid', JSON.stringify(id), {headers: header})
                         .toPromise()
                         .then(this.extractData);
     }

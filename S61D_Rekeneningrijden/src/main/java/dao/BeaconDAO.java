@@ -65,4 +65,16 @@ public class BeaconDAO {
         }
     }
 
+    public List<Beacon> getAllBeaconByPeriod(String iCan, String dateFrom, String dateTo) {
+        System.out.println(dateFrom + "  " + dateTo);
+         try{
+            List<Beacon> result = em.createNamedQuery("Beacon.getByPeriod").setParameter("ican", iCan).setParameter("dateFrom", dateFrom).setParameter("dateTo", dateTo).getResultList();
+             System.out.println(result + "test3");
+            return result;
+        }catch (Exception ex){
+             System.out.println("dao.BeaconDAO.getAllBeaconByPeriod()");
+            return null;
+        }
+    }
+
 }

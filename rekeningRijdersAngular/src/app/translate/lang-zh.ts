@@ -18,7 +18,7 @@ export const LANG_ZH_TRANS = {
     'Achternaam': '你好，世界 你好，世界',
     'Gebruikernaam': '你好，世界',
     'Wachtwoord': '你好，世界',
-    'Mobiel nummer"': '你好，世界 你好，世界',
+    'Mobiel nummer': '你好，世界 你好，世界',
     'PostCode': '你好，世界',
     'Huisnummer': '你好，世界 你好，世界',
     'Stad': '你好，世界',

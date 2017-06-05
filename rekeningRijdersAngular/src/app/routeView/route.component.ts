@@ -116,7 +116,7 @@ export class RoutePageComponent {
   onChangeLicensePlate(newObj) {
     this.selectedVehicle = newObj;
     this.currentLicencePlate = this.selectedVehicle.licensePlate
-    this.movementService.GetMovementsPerIcan(this.selectedVehicle.licensePlate, this.currentSelectedDate)
+    this.movementService.GetMovementsPerIcan(this.selectedVehicle.iCan, this.currentSelectedDate)
       .then(result => {
         if (result.length != 0) {
           this.nothingErrorMessage = " "
@@ -149,52 +149,60 @@ export class RoutePageComponent {
     console.log("calculating...")
     var d1 = Date.parse(this.currentSelectedVanDate);
     var d2 = Date.parse(this.currentSelectedTotDate);
-     if (d1 == null || d2 == null ) {
-      this.dateErrorMessage = "Can't calculate this dates"
+  
+    if (d1 > d2 || isNaN(d1) || isNaN(d2)) {
+     this.nothingPeriodErrorMessage = "Can't calculate this dates"
     } else {
-      this.dateErrorMessage = ""
-    }
-    if (d1 > d2 ) {
-      this.dateErrorMessage = "Can't calculate this dates"
-    } else {
-      this.dateErrorMessage = ""
-    }
-    this.movementService.GetMovementsPerPeriod(this.selectedVehicle.licensePlate, this.currentSelectedVanDate, this.currentSelectedTotDate)
-      .then(result => {
-        if (result.length != 0) {
-          this.nothingErrorMessage = " "
-          this.allMovementsPeriodList = result
+      this.nothingPeriodErrorMessage = ""
+    
+    this.movementService.GetMovementsPerPeriod(this.selectedVehicle.iCan, this.currentSelectedVanDate, this.currentSelectedTotDate)
+      
+       .then(result => {
+         console.log(result)
+         this.afstand = result
+         if (this.afstand == 'null'){
+           this.afstand = '0.0'
+         }
+         if (this.afstand == null){
+           this.afstand = '0.0'
+         }
+         
+       })
+      //   if (result.length != 0) {
+      //     this.nothingErrorMessage = " "
+      //     this.allMovementsPeriodList = result
 
-          console.log(this.allMovementsPeriodList)
+      //     console.log(this.allMovementsPeriodList)
 
 
-          this.allMovementsPeriodList.forEach(element => {
-            if (this.tempLat != 0 && this.tempLong != 0) {
-              //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
-              var R = 6371; // km
-              var dLat = toRad(this.tempLat - element.lat);
-              var dLon = toRad(this.tempLong - element.lng);
-              var lat1 = toRad(element.lat);
-              var lat2 = toRad(this.tempLat);
+      //     this.allMovementsPeriodList.forEach(element => {
+      //       if (this.tempLat != 0 && this.tempLong != 0) {
+      //         //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+      //         var R = 6371; // km
+      //         var dLat = toRad(this.tempLat - element.lat);
+      //         var dLon = toRad(this.tempLong - element.lng);
+      //         var lat1 = toRad(element.lat);
+      //         var lat2 = toRad(this.tempLat);
 
-              var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-              var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-              var d = R * c;
+      //         var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      //           Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+      //         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      //         var d = R * c;
 
-              this.afstand = this.afstand + d;
+      //         this.afstand = this.afstand + d;
 
-              this.tempLat = element.lat
-              this.tempLong = element.lng
-            } else {
-              this.tempLat = element.lat
-              this.tempLong = element.lng
-            }
-          });
-        } else {
-          this.nothingPeriodErrorMessage = "nothing found for this filter"
-        }
-      })
+      //         this.tempLat = element.lat
+      //         this.tempLong = element.lng
+      //       } else {
+      //         this.tempLat = element.lat
+      //         this.tempLong = element.lng
+      //       }
+      //     });
+        // } else {
+        //   this.nothingPeriodErrorMessage = "nothing found for this filter"
+        // }
+      //})
+      }
   }
 
   markerDragEnd(m: marker, $event: MouseEvent) {

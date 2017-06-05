@@ -41,11 +41,11 @@ public class Init {
     public void Init() {
         Driver driver = driverDAO.createNewDriver(new Driver("Lino", "Thaencharun", "5611SH", "Eindhoven", "Lino_thaencharun@hotmail.com", "lino1", "p@33word", "10c", "0614387088"));
         
-        Vehicle vehicle = vehicleDAO.createNewVehicle(new Vehicle("12-test-1"));
+        Vehicle vehicle = vehicleDAO.createNewVehicle(new Vehicle("12-test-1", "NL123"));
         vehicle.setOwner(driver);
         vehicleDAO.addVehicleToDriver(vehicle);
         
-        Vehicle vehicle1 = vehicleDAO.createNewVehicle(new Vehicle("12-test-2"));
+        Vehicle vehicle1 = vehicleDAO.createNewVehicle(new Vehicle("12-test-2", "NL123"));
         vehicle.setOwner(driver);
         vehicleDAO.addVehicleToDriver(vehicle1);
         

@@ -253,11 +253,12 @@ public class VehicleTransmitter {
             JSONArray json = new JSONArray(result.toString());
             for (int i = 0; i < json.length(); i++) {
                 JSONObject temp = json.getJSONObject(i);
-                String tempican = temp.getString("ican");
+                String tempican = temp.getString("ICAN");
                 Double templat = temp.getDouble("latitude");
                 Double templon = temp.getDouble("longitude");
                 String tempdatetime = temp.getString("datetime");
-                tempBeacon = new Beacon(tempican, templat, templon, tempdatetime);
+                String signature = temp.getString("datetime");
+                tempBeacon = new Beacon(tempican, templat, templon, tempdatetime, signature);
                 beacons.add(tempBeacon);
             }
 

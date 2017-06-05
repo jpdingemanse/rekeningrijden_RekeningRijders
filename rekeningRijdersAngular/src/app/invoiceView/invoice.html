@@ -16,11 +16,11 @@
                 </div>
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-lg-4"><label for="First_name">Maand</label></div>
-                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{inv.month}}"></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{inv.month}}" disabled></div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4"><label for="Last_name">Betaal status</label></div>
-                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{inv.paid}}"></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{inv.paid}}" disabled></div>
                 </div>
             </div>
         </div>
@@ -39,37 +39,33 @@
                         <label for="First_name">Totaal prijs</label>
                     </div>
                     <div class="col-lg-5">
-                        <input type="text" class="form-control" id="First_name" value="{{totalPrice}}">
+                        <input type="text" class="form-control" id="First_name" value="{{totalPrice}}" disabled>
                     </div>
-                    <div class="col-lg-2" *ngIf="paypalButtonStatus">
+                    <div class="col-lg-2">
                         <div id="paypal-button"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="panel panel-default" *ngFor="let invR of invoiceRowList">
             <div class="panel-body">
-
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-lg-4"><label for="First_name">Id</label></div>
-                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.id}}"></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.id}}" disabled></div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4"><label for="Last_name">Omschrijving</label></div>
-                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.description}}"></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.description}}" disabled></div>
                 </div>
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-lg-4"><label for="First_name">Prijs</label></div>
-                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.price}}"></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.price}}" disabled></div>
                 </div>
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-lg-4"><label for="First_name">Auto</label></div>
-                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.vehicle.licensePlate}}"></div>
+                    <div class="col-lg-7"><input type="text" class="form-control" id="First_name" value="{{invR.vehicle.licensePlate}}" disabled></div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

@@ -28,7 +28,9 @@ export class InvoiceService {
     SetInvoicePaid(id: any) : Promise<Invoice>{
         var header = new Headers();
         header.append('Content-Type', 'application/json');
+
         return this.http.put(this.localurl + 'InvoicePaid', JSON.stringify(id), {headers: header})
+
                         .toPromise()
                         .then(this.extractData);
     }

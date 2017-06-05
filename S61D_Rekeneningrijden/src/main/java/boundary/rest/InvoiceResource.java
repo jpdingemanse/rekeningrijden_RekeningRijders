@@ -51,7 +51,7 @@ public class InvoiceResource {
         return invoiceService.getInvoice(id);
     }
     
-    @PUT
+    @POST
     @Path("InvoicePaid")
     @Consumes("application/json")
     public void invoicePaid(Invoice invoice){

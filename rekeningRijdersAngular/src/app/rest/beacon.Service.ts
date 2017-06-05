@@ -15,7 +15,7 @@ export class BeaconService {
 
     GetMovementsPerIcan(ican: String, date: string): Promise<Beacon []> {
        
-        return this.http.get(this.localurl + "GetMovementsPerIcan/"+ ican + "/" + date)
+        return this.http.get(this.url + "GetMovementsPerIcan/"+ ican + "/" + date)
 
                         .toPromise()
                         .then(this.extractData);
@@ -23,7 +23,7 @@ export class BeaconService {
 
     GetMovementsPerPeriod(ican: String, datevan: string, datetot: string): Promise<string> {
        console.log(this.localurl+"GetMovementsPerPeriod/" + ican+ "/" + datevan + "/" + datetot)
-        return this.http.get(this.localurl + "GetMovementsPerPeriod/"+ ican + "/" + datevan + "/" + datetot)
+        return this.http.get(this.url + "GetMovementsPerPeriod/"+ ican + "/" + datevan + "/" + datetot)
                         .toPromise()
                         .then(this.extractData);
     }

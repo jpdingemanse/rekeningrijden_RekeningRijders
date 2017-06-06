@@ -50,9 +50,9 @@ public class Init {
         vehicleDAO.addVehicleToDriver(vehicle1);
         
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
-        Invoice inserInvoice1 = new Invoice(1, timeStamp.getTime(), false, "Mei");
+        Invoice inserInvoice1 = new Invoice(1, timeStamp.getTime(), false, "Mei 2017");
         inserInvoice1.setDriver(driver);
-        Invoice inserInvoice2 = new Invoice(2, timeStamp.getTime(), false, "Juni");
+        Invoice inserInvoice2 = new Invoice(2, timeStamp.getTime(), false, "Juni 2017");
         inserInvoice2.setDriver(driver);
         inserInvoice1 = invoiceDAO.createInvoice(inserInvoice1);
         inserInvoice2 = invoiceDAO.createInvoice(inserInvoice2);

@@ -124,7 +124,7 @@ export class RoutePageComponent {
 
           console.log(this.allMovementsList)
         } else {
-          this.nothingErrorMessage = "nothing found for this filter"
+          this.nothingErrorMessage = "Niets gevonden voor dit filter"
           this.allMovementsList = []
         }
       })
@@ -151,7 +151,7 @@ export class RoutePageComponent {
     var d2 = Date.parse(this.currentSelectedTotDate);
   
     if (d1 > d2 || isNaN(d1) || isNaN(d2)) {
-     this.nothingPeriodErrorMessage = "Can't calculate this dates"
+     this.nothingPeriodErrorMessage = "Kan deze datums niet uitrekenen"
     } else {
       this.nothingPeriodErrorMessage = ""
     

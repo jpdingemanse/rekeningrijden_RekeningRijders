@@ -29,7 +29,7 @@ import service.InvoiceService;
     ,
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
     ,
-    @ActivationConfigProperty(propertyName = "destination", propertyValue = "Admin")
+    @ActivationConfigProperty(propertyName = "destination", propertyValue = "factuurInternal")
     ,
     @ActivationConfigProperty(propertyName = "resourceAdapter", propertyValue = "activemq-rar-5.12.0")
 

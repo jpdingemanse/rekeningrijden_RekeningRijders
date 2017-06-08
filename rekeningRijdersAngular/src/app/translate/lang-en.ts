@@ -39,6 +39,15 @@ export const LANG_EN_TRANS = {
     'AfstandType': 'Distancetype',
     'Afstand': 'Distance',
     'Login': 'Login',
-    'Annuleren': 'Cancel'
-
+    'Annuleren': 'Cancel',
+    'Auto': 'Car',
+    'Totaal prijs': 'Total price',
+    'Factuur details': 'Invoice details',
+    'Betaal status': 'Payment status',
+    'Factuur per maand': 'Invoice per month',
+    'Niets gevonden voor dit filter': 'Nothing found for this filter',
+    'Er is iets mis gegaan': 'Something went terribly wrong',
+    'Geen waarde ingevuld': 'No value',
+    'Kan deze datums niet uitrekenen': 'Can\'t calculate this dates',
+    'Aanvraag kan niet worden voltooid': 'Can\'t complete this request'
 };

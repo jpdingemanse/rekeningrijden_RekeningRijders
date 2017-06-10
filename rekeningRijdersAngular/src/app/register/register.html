@@ -36,7 +36,7 @@
 <div class="panel panel-default">
 
     <div class="panel-body pull-right">
-        <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> {{'Annuleren' | translate}}</button>
+        <button class="btn btn-default" (click)="onclickCancel()"><i class="fa fa-fw fa-times" aria-hidden="true"></i> {{'Annuleren' | translate}}</button>
         <button class="btn btn-success" (click)="createNewProfile(name.value, lastname.value,username.value ,password.value, conformation.value, phonenumber.value, postal.value, housenumber.value, city.value)"><i class="fa fa-fw fa-check" aria-hidden="true"></i> {{'Nieuw account'  | translate}}</button>
     </div>
 </div>

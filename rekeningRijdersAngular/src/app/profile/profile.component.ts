@@ -41,18 +41,22 @@ export class ProfileComponent implements OnInit {
     }
 
     onclickNewRequest(value : string){
+        if(value == ""){
+            this.errorMessage = "Geen waarde ingevuld"
+        } else{
         this.request = new Request(0, this.profile.id, value, true);
         this.vehicleService.newRequest(this.request)
                             .then(value => {
                                 if(value){
                                     this.allRequest.push(this.request)
                                 }else{
-                                    this.errorMessage = "Aanvraag kan niet worden voltooit";
+                                    this.errorMessage = "Aanvraag kan niet worden voltooid";
                                 }
                             })
                             .catch(() => {
                                 this.errorMessage = "Er is iets mis gegaan"
                             })
+        }
 
     }
 

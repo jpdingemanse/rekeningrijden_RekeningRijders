@@ -6,6 +6,7 @@
 package service;
 
 import dao.InvoiceRowDAO;
+import dao.VehicleDAO;
 import domain.InvoiceRow;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,11 +21,15 @@ public class InvoiceRowService {
     @Inject
     InvoiceRowDAO invoiceRowDao;
     
+    @Inject
+    VehicleDAO vehicleDao;
+    
     public List<InvoiceRow> getInvoiceRowByInvoiceId(int id){
         return invoiceRowDao.getInvoicesByInvoiceId(id);
     }
     
     public void createNewInvoiceRow(InvoiceRow irs){
+        if(vehicleDao.checkVehicle(irs.getVehicle()))
         invoiceRowDao.createInvoiceRow(irs);
     }
 }

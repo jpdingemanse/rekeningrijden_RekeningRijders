@@ -43,5 +43,22 @@ public class VehicleDAO {
     public List<Vehicle> getVehicleByOwner(int id){
         return em.createQuery("select v from Vehicle v where v.owner.id = :id").setParameter("id", id).getResultList();
     }
+
+    public boolean checkVehicle(Vehicle vehicle) {
+        Vehicle tempResult = em.find(Vehicle.class, vehicle.getLicensePlate());
+        return tempResult != null;
+    }
+
+    public boolean updateICan(Vehicle vehicle) {
+        try{
+            Vehicle tempResult = em.find(Vehicle.class, vehicle.getLicensePlate());
+            tempResult.setiCan(vehicle.getiCan());
+            em.merge(tempResult);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+        
+    }
     
 }

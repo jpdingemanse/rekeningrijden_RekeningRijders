@@ -60,4 +60,11 @@ public class VehicleResource {
     public List<RequestAddVehicle> getAllRequest(@PathParam("id")int id){
         return vehicleService.getAllReQuest(id);
     }
+    
+    @POST
+    @Path("UpdateICan")
+    @Consumes("application/json")
+    public boolean updateICan(Vehicle vehicle){
+        return vehicleService.updateICan(vehicle);
+    }
 }

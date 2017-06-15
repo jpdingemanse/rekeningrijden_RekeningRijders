@@ -30,7 +30,7 @@ public class InvoiceRow implements Serializable {
     int id;
     double price;
     String description;
-
+    String landCode;
     @ManyToOne
     Invoice invoice;
     
@@ -87,7 +87,13 @@ public class InvoiceRow implements Serializable {
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
-    
-    
+
+    public String getLandCode() {
+        return landCode;
+    }
+
+    public void setLandCode(String landCode) {
+        this.landCode = landCode;
+    }
     
 }

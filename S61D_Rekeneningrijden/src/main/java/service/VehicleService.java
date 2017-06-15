@@ -44,6 +44,10 @@ public class VehicleService {
     public List<RequestAddVehicle> getAllReQuest(int id){
         return vehicleTransmitter.GetAllRequest(id);
     }
+
+    public boolean updateICan(Vehicle vehicle) {
+        return vehicleDAO.updateICan(vehicle);
+    }
     
 
     

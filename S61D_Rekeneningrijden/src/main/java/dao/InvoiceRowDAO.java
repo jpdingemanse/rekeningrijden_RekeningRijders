@@ -26,8 +26,13 @@ public class InvoiceRowDAO {
     }
     
     public InvoiceRow createInvoiceRow(InvoiceRow invoiceRow){
-        em.persist(invoiceRow);
-        em.flush();
-        return em.find(InvoiceRow.class, invoiceRow.getId());
+        try {
+            em.persist(invoiceRow);
+            em.flush();
+            return em.find(InvoiceRow.class, invoiceRow.getId());
+        }catch (Exception e){
+            return null;
+        }
+        
     }
 }

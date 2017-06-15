@@ -39,28 +39,28 @@ public class Init {
     
     @PostConstruct
     public void Init() {
-        Driver driver = driverDAO.createNewDriver(new Driver("Lino", "Thaencharun", "5611SH", "Eindhoven", "Lino_thaencharun@hotmail.com", "lino1", "p@33word", "10c", "0614387088"));
-        
-        Vehicle vehicle = vehicleDAO.createNewVehicle(new Vehicle("12-test-1", "NL123"));
-        vehicle.setOwner(driver);
-        vehicleDAO.addVehicleToDriver(vehicle);
-        
-        Vehicle vehicle1 = vehicleDAO.createNewVehicle(new Vehicle("12-test-2", "NL123"));
-        vehicle.setOwner(driver);
-        vehicleDAO.addVehicleToDriver(vehicle1);
-        
-        Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
-        Invoice inserInvoice1 = new Invoice(1, timeStamp.getTime(), false, "Mei 2017");
-        inserInvoice1.setDriver(driver);
-        inserInvoice1 = invoiceDAO.createInvoice(inserInvoice1);
-        
-        InvoiceRow invoiceRow = new InvoiceRow(1, 10, "Test", inserInvoice1);
-        invoiceRow.setVehicle(vehicle);
-        invoiceRowDAO.createInvoiceRow(invoiceRow);
-        
-        InvoiceRow invoiceRow1 = new InvoiceRow(2, 20, "Test", inserInvoice1);
-        invoiceRow1.setVehicle(vehicle1);
-        invoiceRowDAO.createInvoiceRow(invoiceRow1);
+//        Driver driver = driverDAO.createNewDriver(new Driver("Lino", "Thaencharun", "5611SH", "Eindhoven", "Lino_thaencharun@hotmail.com", "lino1", "p@33word", "10c", "0614387088"));
+//        
+//        Vehicle vehicle = vehicleDAO.createNewVehicle(new Vehicle("12-kb-345", "NL123"));
+//        vehicle.setOwner(driver);
+//        vehicleDAO.addVehicleToDriver(vehicle);
+//        
+//        Vehicle vehicle1 = vehicleDAO.createNewVehicle(new Vehicle("12-test-2", "NL111"));
+//        vehicle1.setOwner(driver);
+//        vehicleDAO.addVehicleToDriver(vehicle1);
+//        
+//        Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
+//        Invoice inserInvoice1 = new Invoice(1, timeStamp.getTime(), false, "Mei 2017");
+//        inserInvoice1.setDriver(driver);
+//        inserInvoice1 = invoiceDAO.createInvoice(inserInvoice1);
+//        
+//        InvoiceRow invoiceRow = new InvoiceRow(1, 10, "Test", inserInvoice1);
+//        invoiceRow.setVehicle(vehicle);
+//        invoiceRowDAO.createInvoiceRow(invoiceRow);
+//        
+//        InvoiceRow invoiceRow1 = new InvoiceRow(2, 20, "Test", inserInvoice1);
+//        invoiceRow1.setVehicle(vehicle1);
+//        invoiceRowDAO.createInvoiceRow(invoiceRow1);
     }
     
 }

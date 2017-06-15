@@ -25,7 +25,7 @@ import service.InvoiceService;
  * @author ruthgervandeneikhof
  */
 @MessageDriven(name = "testmdb", activationConfig = {
-    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/Admin")
+    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/factuurInternal")
     ,
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
     ,
@@ -51,7 +51,7 @@ public class MessageBean implements MessageListener {
         try {
             InvoiceRow InvoiceRow = gson.fromJson(msg.getText(), InvoiceRow.class);
             if(is.checkInvoice(InvoiceRow.getInvoice())){
-                is.createInvoice(InvoiceRow.getInvoice());
+                Invoice result = is.createInvoice(InvoiceRow.getInvoice());
                 irs.createNewInvoiceRow(InvoiceRow);
             }
             

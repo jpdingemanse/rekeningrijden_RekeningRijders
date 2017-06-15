@@ -40,6 +40,7 @@ export class InvoicePageComponent implements OnInit {
     getInvoicePerDriver(){
         this.invoiceService.GetInvoices(this.profile.id)
                             .then(value => this.invoiceList = value)
+                            .catch(error => { error = "Kan geen verbinding maken met de database" });
     }
     
     onclickShowInvoiceDetails(value : Invoice){
@@ -66,6 +67,7 @@ export class InvoicePageComponent implements OnInit {
                                         
                                         
                                 })
+                                .catch(error => { error = "Kan geen verbinding maken met de database" });
     }
     paymentFunction(value : string, invoiceService : InvoiceService, invoice : Invoice){
         let check = false;
@@ -109,6 +111,7 @@ export class InvoicePageComponent implements OnInit {
                                         window.alert('Payment Complete!'); 
                                         invoiceService.SetInvoicePaid(invoice);
                                     })
+                                    .catch(error => { error = "Kan geen verbinding maken met de database" });
             }
 
         }, '#paypal-button');

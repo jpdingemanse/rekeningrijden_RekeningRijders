@@ -124,7 +124,7 @@ export class RoutePageComponent {
 
           console.log(this.allMovementsList)
         } else {
-          this.nothingErrorMessage = "Niets gevonden voor dit filter"
+          this.nothingErrorMessage = "Niets gevonden voor deze filter"
           this.allMovementsList = []
         }
       })

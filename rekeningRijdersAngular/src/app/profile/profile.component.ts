@@ -34,10 +34,12 @@ export class ProfileComponent implements OnInit {
                             .then(value => {
                                 this.allRequest = value;
                             })
+                            .catch(error => { error = "Kan geen verbinding maken met de database" });
     }
     GetAllVehicle(){
         this.vehicleService.getVehicleById(this.profile.id)
-                            .then(value => {this.vehicle = value});
+                            .then(value => {this.vehicle = value})
+                            .catch(error => { error = "Kan geen verbinding maken met de database" });
     }
 
     onclickNewRequest(value : string){

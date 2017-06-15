@@ -43,20 +43,32 @@ export class InvoicePageComponent implements OnInit {
     }
     
     onclickShowInvoiceDetails(value : Invoice){
+        this.invoiceRowList = [];
         this.invoiceRowService.getInvoiceRowByInvoice(value.id)
                                 .then(value => this.invoiceRowList = value)
                                 .then(() => {
-                                    for(let i = 0; i < this.invoiceRowList.length; i++){
-                                        this.totalPrice =+ this.invoiceRowList[i].price;
+                                    if(this.invoiceRowList.length == 0){
+                                        this.totalPrice = 0;
                                     }
+                                    for(let i = 0; i < this.invoiceRowList.length; i++){
+                                            this.totalPrice =+ this.invoiceRowList[i].price;
+                                        }  
                                 })
                                 .then(() => {
                                         this.paypalButtonStatus = true;
                                         this.price = this.totalPrice.toString()
-                                        this.paymentFunction(this.price)
+                                        if(!value.paid){
+                                            if(this.totalPrice != 0){
+                                                this.paymentFunction(this.price, this.invoiceService, value)
+                                            }
+                                            
+                                        }
+                                        
+                                        
                                 })
     }
-    paymentFunction(value : string){
+    paymentFunction(value : string, invoiceService : InvoiceService, invoice : Invoice){
+        let check = false;
         (window as any).paypal.Button.render({
             env: 'sandbox', // sandbox | production
 
@@ -91,15 +103,17 @@ export class InvoicePageComponent implements OnInit {
 
             // onAuthorize() is called when the buyer approves the payment
             onAuthorize: function (data, actions) {
-
                 // Make a call to the REST api to execute the payment
-                return actions.payment.execute().then(function () {
-                    window.alert('Payment Complete!');
-                });
+                return actions.payment.execute()
+                                    .then(function () {
+                                        window.alert('Payment Complete!'); 
+                                        invoiceService.SetInvoicePaid(invoice);
+                                    })
             }
 
         }, '#paypal-button');
-        this.paypalButtonStatus = false;
+
+        
     }
     
 }

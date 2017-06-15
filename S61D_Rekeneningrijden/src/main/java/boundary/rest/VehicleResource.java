@@ -60,9 +60,4 @@ public class VehicleResource {
     public List<RequestAddVehicle> getAllRequest(@PathParam("id")int id){
         return vehicleService.getAllReQuest(id);
     }
-    
-    
-
-    
-   
 }

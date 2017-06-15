@@ -13,7 +13,7 @@
         </select>
         <br>
     <label >
-                    <font color="Orange">{{nothingErrorMessage}}</font>
+                    <font color="Orange">{{nothingErrorMessage | translate}}</font>
                 </label>
 <div class="col-md-12">
     <div class="table-responsive">
@@ -83,11 +83,12 @@
 
         </table>
         <label >
-                    <font color="Orange">{{nothingPeriodErrorMessage}}</font>
+                    <font color="Red">{{nothingPeriodErrorMessage | translate}}</font>
                 </label>
-         <label >
-                    <font color="red">{{dateErrorMessage}}</font>
-                </label>
+                <br>
+         <!--<label >
+                    <font color="Red">{{dateErrorMessage}}</font>
+                </label>-->
 
 
         <button class="btn btn-primary btn-xs" (click)="onclickCalculate()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{{ 'Bereken afstand' | translate}}</button>
@@ -105,14 +106,14 @@
                                 <th>{{'Afstand' | translate}}</th>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let t of rateList">
+                               
                                     <td>{{regio}}</td>
                                     <td>{{currentLicencePlate}}</td>
                                     <td>KM</td>
                                     <td>
                                         {{afstand}}
                                          </td>
-                                </tr>
+                               
                             </tbody>
 
                         </table>

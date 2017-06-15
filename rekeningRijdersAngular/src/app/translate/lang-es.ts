@@ -16,9 +16,9 @@ export const LANG_ES_TRANS = {
     'Profiel gegevens': 'Profiel gegevens',
     'Naam': 'Naam',
     'Achternaam': 'Achternaam',
-    'Gebruikernaam': 'Gebruikernaam',
+    'Gebruikernaam': 'Gebruikersnaam',
     'Wachtwoord': 'Wachtwoord',
-    'Mobiel nummer"': 'Mobiel nummer',
+    'Mobiel nummer': 'Mobiel nummer',
     'PostCode': 'PostCode',
     'Huisnummer': 'Huisnummer',
     'Stad': 'Stad',
@@ -39,5 +39,15 @@ export const LANG_ES_TRANS = {
     'AfstandType': 'AfstandType',
     'Afstand': 'Afstand',
     'Login': 'Login',
-    'Annuleren': 'Annuleren'
+    'Annuleren': 'Annuleren',
+    'Auto': 'Auto',
+    'Totaal prijs': 'Totaal prijs',
+    'Factuur details': 'Factuur details',
+    'Betaal status': 'Betaal status',
+    'Factuur per maand': 'Factuur per maand',
+    'Niets gevonden voor dit filter': 'Niets gevonden voor dit filter',
+    'Er is iets mis gegaan': 'Er is iets mis gegaan',
+    'Geen waarde ingevuld': 'Geen waarde ingevuld',
+    'Kan deze datums niet uitrekenen': 'Kan deze datums niet uitrekenen'
+
 };

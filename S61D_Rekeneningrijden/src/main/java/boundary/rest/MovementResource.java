@@ -29,5 +29,6 @@ public class MovementResource {
     public List<Movement> getAllMovements(Vehicle vehicle){
         return movementService.getAllMovements(vehicle);
     }
+    
 
 }

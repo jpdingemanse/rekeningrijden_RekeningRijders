@@ -41,18 +41,18 @@ public class Init {
     public void Init() {
         Driver driver = driverDAO.createNewDriver(new Driver("Lino", "Thaencharun", "5611SH", "Eindhoven", "Lino_thaencharun@hotmail.com", "lino1", "p@33word", "10c", "0614387088"));
         
-        Vehicle vehicle = vehicleDAO.createNewVehicle(new Vehicle("12-test-1"));
+        Vehicle vehicle = vehicleDAO.createNewVehicle(new Vehicle("12-test-1", "NL123"));
         vehicle.setOwner(driver);
         vehicleDAO.addVehicleToDriver(vehicle);
         
-        Vehicle vehicle1 = vehicleDAO.createNewVehicle(new Vehicle("12-test-2"));
+        Vehicle vehicle1 = vehicleDAO.createNewVehicle(new Vehicle("12-test-2", "NL123"));
         vehicle.setOwner(driver);
         vehicleDAO.addVehicleToDriver(vehicle1);
         
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
-        Invoice inserInvoice1 = new Invoice(1, timeStamp.getTime(), false, "Mei");
+        Invoice inserInvoice1 = new Invoice(1, timeStamp.getTime(), false, "Mei 2017");
         inserInvoice1.setDriver(driver);
-        Invoice inserInvoice2 = new Invoice(2, timeStamp.getTime(), false, "Juni");
+        Invoice inserInvoice2 = new Invoice(2, timeStamp.getTime(), false, "Juni 2017");
         inserInvoice2.setDriver(driver);
         inserInvoice1 = invoiceDAO.createInvoice(inserInvoice1);
         inserInvoice2 = invoiceDAO.createInvoice(inserInvoice2);

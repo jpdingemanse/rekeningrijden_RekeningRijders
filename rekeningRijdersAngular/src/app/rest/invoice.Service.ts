@@ -9,7 +9,7 @@ import { Invoice } from './../domain/invoice';
 export class InvoiceService {
 
     private url = "http://192.168.24.43:8080/S61D_Rekeneningrijden/api/Invoice/";
-    private localurl = "http://localhost:18410/S61D_Rekeneningrijden/api/Invoice/"
+    // private url = "http://localhost:18410/S61D_Rekeneningrijden/api/Invoice/"
 
 
 
@@ -28,7 +28,9 @@ export class InvoiceService {
     SetInvoicePaid(id: any) : Promise<Invoice>{
         var header = new Headers();
         header.append('Content-Type', 'application/json');
-        return this.http.put(this.url + 'InvoicePaid', JSON.stringify(id), {headers: header})
+
+        return this.http.post(this.url + 'InvoicePaid', JSON.stringify(id), {headers: header})
+
                         .toPromise()
                         .then(this.extractData);
     }

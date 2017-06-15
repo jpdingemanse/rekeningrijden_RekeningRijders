@@ -25,6 +25,9 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 @Entity
 @NamedQueries({
     @NamedQuery(name="Beacon.getByIcan", query="Select b from Beacon b where b.iCan = :ican AND b.dateTime LIKE :date"),
+    @NamedQuery(name="Beacon.getByPeriod", query="Select b from Beacon b where b.iCan = :ican AND b.dateTime > :dateFrom AND b.dateTime < :dateTo"),
+
+
 })
 public class Beacon implements Serializable {
     @Id
@@ -46,6 +49,16 @@ public class Beacon implements Serializable {
         this.longitude = longitude;
         this.dateTime = dateTime;
     }
+
+    public Beacon(String iCan, double latitude, double longitude, String dateTime, String signature) {
+        this.iCan = iCan;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.dateTime = dateTime;
+        this.signature = signature;
+    }
+    
+    
     public String getiCan() {
         return iCan;
     }
@@ -84,10 +97,4 @@ public class Beacon implements Serializable {
     public void setSignature(String signature) {
         this.signature = signature;
     }
-
-
-
-  
-    
-    
 }

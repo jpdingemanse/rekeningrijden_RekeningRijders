@@ -18,7 +18,7 @@ export const LANG_ZH_TRANS = {
     'Achternaam': '你好，世界 你好，世界',
     'Gebruikernaam': '你好，世界',
     'Wachtwoord': '你好，世界',
-    'Mobiel nummer"': '你好，世界 你好，世界',
+    'Mobiel nummer': '你好，世界 你好，世界',
     'PostCode': '你好，世界',
     'Huisnummer': '你好，世界 你好，世界',
     'Stad': '你好，世界',
@@ -39,5 +39,15 @@ export const LANG_ZH_TRANS = {
     'AfstandType': '你好，世界',
     'Afstand': '你好，世界',
     'Login': '你好，世界',
-    'Annuleren': '你世界'
+    'Annuleren': '你世界',
+    'Auto': '你世界',
+    'Totaal prijs': '你世界 你世界',
+    'Factuur details': '你好 你好',
+    'Betaal status': '你好你好世界',
+    'Factuur per maand': '你好 你好 你好',
+     'Niets gevonden voor dit filter': '你好 你好 你好 你好你好你好',
+    'Er is iets mis gegaan': '你好你好 你好 你好 你好',
+    'Geen waarde ingevuld': '你 你好你',
+    'Kan deze datums niet uitrekenen': '你好 你好 你好 你好你好你好你好 你好 ',
+     'Aanvraag kan niet worden voltooid': '你好 你好 你好 你好你好 你好你好 你好'
 };

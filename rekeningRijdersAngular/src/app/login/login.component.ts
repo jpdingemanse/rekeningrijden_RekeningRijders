@@ -24,7 +24,7 @@ export class LoginComponent {
                         this.loginService.loginPage = true
                         this.loginService.loginStatus = true
                     } else {
-                        this.loginErrorMessage = 'Incorrecte gebruikernaam of wachtwoord!!';
+                        this.loginErrorMessage = 'Kan geen verbinding met de database maken';
                     }
                 })
         }

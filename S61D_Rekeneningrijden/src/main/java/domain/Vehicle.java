@@ -21,6 +21,7 @@ import javax.persistence.OneToMany;
 public class Vehicle implements Serializable{
     @Id
     private String licensePlate;
+    private String iCan;
     
     @ManyToOne
     private Driver owner;
@@ -31,8 +32,9 @@ public class Vehicle implements Serializable{
     public Vehicle() {
     }
 
-    public Vehicle(String licensePlate) {
+    public Vehicle(String licensePlate, String iCan) {
         this.licensePlate = licensePlate;
+        this.iCan = iCan;
         this.invoices = new ArrayList<>();
     }
 
@@ -58,6 +60,14 @@ public class Vehicle implements Serializable{
 
     public void setInvoices(List<InvoiceRow> invoices) {
         this.invoices = invoices;
+    }
+
+    public String getiCan() {
+        return iCan;
+    }
+
+    public void setiCan(String iCan) {
+        this.iCan = iCan;
     }
     
     

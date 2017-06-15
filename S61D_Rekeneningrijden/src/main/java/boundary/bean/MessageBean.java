@@ -50,9 +50,11 @@ public class MessageBean implements MessageListener {
         TextMessage msg = (TextMessage) message;
         try {
             InvoiceRow InvoiceRow = gson.fromJson(msg.getText(), InvoiceRow.class);
+            if(is.checkInvoice(InvoiceRow.getInvoice())){
+                is.createInvoice(InvoiceRow.getInvoice());
+                irs.createNewInvoiceRow(InvoiceRow);
+            }
             
-            is.createInvoice(InvoiceRow.getInvoice());
-            irs.createNewInvoiceRow(InvoiceRow);
         } catch (JMSException ex) {
             Logger.getLogger(MessageBean.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -22,7 +22,8 @@ import javax.persistence.OneToMany;
  * @author victo
  */
 @NamedQueries({
-    @NamedQuery(name="Invoice.getInvoices", query="Select i from Invoice i where i.driver = :billedDriver")
+    @NamedQuery(name="Invoice.getInvoices", query="Select i from Invoice i where i.driver = :billedDriver"),
+    @NamedQuery(name="Invoice.checkInvoice", query="Select i from Invoice i where i.month = :month and i.driver.id = :id")
 })
 @Entity
 public class Invoice implements Serializable {

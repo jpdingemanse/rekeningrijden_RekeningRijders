@@ -47,4 +47,8 @@ public class InvoiceService {
     public Invoice createInvoice(Invoice invoice) {
         return invoiceDao.createInvoice(invoice);
     }
+
+    public boolean checkInvoice(Invoice invoice) {
+        return invoiceDao.checkInvoice(invoice);
+    }
 }

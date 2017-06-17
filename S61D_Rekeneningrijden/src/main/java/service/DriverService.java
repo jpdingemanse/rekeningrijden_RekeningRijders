@@ -29,6 +29,12 @@ public class DriverService {
         driverTransmitter.SendCreatedDriverToAdministrator(createdDriver);
         return driver;
     }
+    
+     public Driver createFromAdministratieNewDriver(Driver driver){
+        Driver createdDriver = driverDao.createNewDriver(driver);
+       
+        return driver;
+    }
 
     public Driver getDriver(int id) {
         return driverDao.getDriver(id);

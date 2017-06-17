@@ -30,7 +30,16 @@ public class DriverResource {
     @Path("CreateDriver")
     @Consumes("application/json")
     public Driver createNewDriver(Driver driver){
+        
         return driverService.createNewDriver(driver);
+    }
+    
+     @POST
+    @Path("CreateDriverFromAdministratie")
+    @Consumes("application/json")
+    public Driver createNewDriverFromAdministratie(Driver driver){
+        System.out.println("boundary.rest.DriverResource.createNewDriver()");
+        return driverService.createFromAdministratieNewDriver(driver);
     }
     
     @GET

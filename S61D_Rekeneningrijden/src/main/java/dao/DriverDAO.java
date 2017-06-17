@@ -30,6 +30,7 @@ public class DriverDAO {
             em.flush();
             return em.find(Driver.class, driver.getId());
         }catch (Exception e){
+            System.out.println(e.getMessage());
             return null;
         }
         

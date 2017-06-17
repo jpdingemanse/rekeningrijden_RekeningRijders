@@ -1,5 +1,4 @@
 boundary\rest\BeaconResource.class
-bounday\jms\JmsConnector.class
 domain\Driver_.class
 service\VehicleService.class
 util\Init.class
@@ -20,6 +19,7 @@ domain\Driver.class
 dao\BeaconDAO.class
 domain\RequestAddVehicle.class
 domain\Invoice_.class
+boundary\bean\MessageBean.class
 domain\Movement.class
 dao\DriverDAO.class
 domain\Movement_.class

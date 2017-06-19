@@ -14,7 +14,7 @@ export class BeaconService {
     constructor(private http : Http){}
 
     GetMovementsPerIcan(ican: String, date: string): Promise<Beacon []> {
-       
+       ican = this.replaceLineSpace(ican)
         return this.http.get(this.url + "GetMovementsPerIcan/"+ ican + "/" + date)
 
                         .toPromise()
@@ -22,6 +22,7 @@ export class BeaconService {
     }
 
     GetMovementsPerPeriod(ican: String, datevan: string, datetot: string): Promise<string> {
+        ican = this.replaceLineSpace(ican)
         return this.http.get(this.url + "GetMovementsPerPeriod/"+ ican + "/" + datevan + "/" + datetot)
                         .toPromise()
                         .then(this.extractData);
@@ -29,5 +30,8 @@ export class BeaconService {
 
     private extractData(res: Response) {
         return res.json();
+    }
+    replaceLineSpace(s:String) {
+        return s && s.replace(' ','|');
     }
 }

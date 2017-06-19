@@ -26,7 +26,12 @@ public class InvoiceDAO {
     }
     
     public void invoicePaid(Invoice invoice){
-        em.merge(invoice);
+        Invoice result = em.find(Invoice.class, invoice.getId());
+        if(result != null){
+            result.setPaid(true);
+            em.merge(invoice);
+        }
+        
     }
     
     public Invoice getInvoice(int id){
@@ -41,7 +46,6 @@ public class InvoiceDAO {
             return em.find(Invoice.class, invoice.getId());
         }
         return result;
-        
     }
 
     public boolean checkInvoice(Invoice invoice) {

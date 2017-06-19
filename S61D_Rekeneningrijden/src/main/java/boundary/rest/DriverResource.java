@@ -30,11 +30,10 @@ public class DriverResource {
     @Path("CreateDriver")
     @Consumes("application/json")
     public Driver createNewDriver(Driver driver){
-        
         return driverService.createNewDriver(driver);
     }
     
-     @POST
+    @POST
     @Path("CreateDriverFromAdministratie")
     @Consumes("application/json")
     public Driver createNewDriverFromAdministratie(Driver driver){

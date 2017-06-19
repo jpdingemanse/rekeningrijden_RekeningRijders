@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,7 +26,6 @@ import javax.persistence.OneToMany;
 public class Driver implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
     private String name;
@@ -46,7 +43,7 @@ public class Driver implements Serializable {
     private List<Vehicle> allVehicle;
     
     @OneToMany(mappedBy = "driver")
-    private List<Invoice> invoices;
+    private List<Invoice> invoice;
 
     public Driver() {
     }
@@ -62,7 +59,22 @@ public class Driver implements Serializable {
         this.houseNumber = houseNumber;
         this.phoneNumber = phoneNumber;
         this.allVehicle = new ArrayList<>();
-        this.invoices = new ArrayList<>();
+        this.invoice = new ArrayList<>();
+    }
+
+    public Driver(int id, String name, String lastname, String postalCode, String city, String email, String username, String password, String houseNumber, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.houseNumber = houseNumber;
+        this.phoneNumber = phoneNumber;
+        this.allVehicle = new ArrayList<>();
+        this.invoice = new ArrayList<>();
     }
 
     public int getId() {
@@ -153,18 +165,13 @@ public class Driver implements Serializable {
         this.allVehicle = allVehicle;
     }
 
-    public List<Invoice> getInvoices() {
-        return invoices;
+    public List<Invoice> getInvoice() {
+        return invoice;
     }
 
-    public void setInvoices(List<Invoice> invoices) {
-        this.invoices = invoices;
+    public void setInvoice(List<Invoice> invoices) {
+        this.invoice = invoices;
     }
-    
-    
-    
-    
-    
     
 }
 

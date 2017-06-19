@@ -39,13 +39,20 @@ public class InvoiceDAO {
     }
 
     public Invoice createInvoice(Invoice invoice) {
-        Invoice result = em.find(Invoice.class, invoice.getId());
-        if(result == null){
-            em.persist(invoice);
-            em.flush();
-            return em.find(Invoice.class, invoice.getId());
+        Invoice in = new Invoice(invoice.getId(), invoice.getTimestamp(), false, invoice.getMonth());
+        in.setDriver(new Driver(invoice.getDriver().getId(), invoice.getDriver().getName(), invoice.getDriver().getLastname(), invoice.getDriver().getPostalCode(), invoice.getDriver().getCity(), invoice.getDriver().getEmail(), invoice.getDriver().getUsername(), invoice.getDriver().getPassword(), invoice.getDriver().getHouseNumber(), invoice.getDriver().getPhoneNumber()));
+        try{
+            Invoice result = em.find(Invoice.class, invoice.getId());
+            if(result == null){
+                em.persist(in);
+                em.flush();
+                return em.find(Invoice.class, invoice.getId());
+            }
+            return result;
+        }catch (Exception e){
+            return null;
         }
-        return result;
+        
     }
 
     public boolean checkInvoice(Invoice invoice) {

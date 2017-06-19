@@ -51,7 +51,12 @@ public class MessageBean implements MessageListener {
         try {
             InvoiceRow InvoiceRow = gson.fromJson(msg.getText(), InvoiceRow.class);
             if(is.checkInvoice(InvoiceRow.getInvoice())){
-                Invoice result = is.createInvoice(InvoiceRow.getInvoice());
+                Invoice invoice = is.createInvoice(InvoiceRow.getInvoice());
+                if(invoice != null){
+                    irs.createNewInvoiceRow(InvoiceRow);
+                }
+                
+            }else{
                 irs.createNewInvoiceRow(InvoiceRow);
             }
             

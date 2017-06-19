@@ -5,7 +5,6 @@
  */
 package dao;
 
-import domain.Invoice;
 import domain.InvoiceRow;
 import java.util.List;
 import javax.ejb.Stateless;

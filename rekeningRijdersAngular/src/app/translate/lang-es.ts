@@ -48,6 +48,7 @@ export const LANG_ES_TRANS = {
     'Niets gevonden voor dit filter': 'Niets gevonden voor dit filter',
     'Er is iets mis gegaan': 'Er is iets mis gegaan',
     'Geen waarde ingevuld': 'Geen waarde ingevuld',
-    'Kan deze datums niet uitrekenen': 'Kan deze datums niet uitrekenen'
+    'Kan deze datums niet uitrekenen': 'Kan deze datums niet uitrekenen',
+    'LandCode' : 'Landcode'
 
 };

@@ -52,8 +52,10 @@ export class InvoicePageComponent implements OnInit {
                                         this.totalPrice = 0;
                                     }
                                     for(let i = 0; i < this.invoiceRowList.length; i++){
-                                            this.totalPrice =+ this.invoiceRowList[i].price;
-                                        }  
+                                            this.totalPrice = this.totalPrice +  this.invoiceRowList[i].price;
+                                            this.totalPrice = Number(this.totalPrice.toFixed(2));
+                                     }  
+                                     
                                 })
                                 .then(() => {
                                         this.paypalButtonStatus = true;

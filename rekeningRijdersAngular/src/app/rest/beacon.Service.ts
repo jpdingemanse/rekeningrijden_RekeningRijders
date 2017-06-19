@@ -14,9 +14,9 @@ export class BeaconService {
     constructor(private http : Http){}
 
     GetMovementsPerIcan(ican: String, date: string): Promise<Beacon []> {
-       
+           ican = this.replaceLineSpace(ican)
         return this.http.get(this.url + "GetMovementsPerIcan/"+ ican + "/" + date)
-
+            
                         .toPromise()
                         .then(this.extractData);
     }
@@ -29,5 +29,14 @@ export class BeaconService {
 
     private extractData(res: Response) {
         return res.json();
+    }
+
+    replaceLineSpace(s:String){
+        s = s.replace(' ', '|');
+        s=  s.replace(' ', '|');
+        s= s.replace(' ', '|');
+        s = s.replace(' ', '|');
+        return s && s.replace(' ', '|');
+        
     }
 }

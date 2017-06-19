@@ -50,5 +50,6 @@ export const LANG_EN_TRANS = {
     'Geen waarde ingevuld': 'No value',
     'Kan deze datums niet uitrekenen': 'Can\'t calculate this dates',
     'Aanvraag kan niet worden voltooid': 'Can\'t complete this request',
-    'Kan geen verbinding met de database maken' : 'Can\'t connect to the database'
+    'Kan geen verbinding met de database maken' : 'Can\'t connect to the database',
+    'LandCode' : 'Country code'
 };

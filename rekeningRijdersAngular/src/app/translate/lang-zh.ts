@@ -49,5 +49,6 @@ export const LANG_ZH_TRANS = {
     'Er is iets mis gegaan': '你好你好 你好 你好 你好',
     'Geen waarde ingevuld': '你 你好你',
     'Kan deze datums niet uitrekenen': '你好 你好 你好 你好你好你好你好 你好 ',
-     'Aanvraag kan niet worden voltooid': '你好 你好 你好 你好你好 你好你好 你好'
+     'Aanvraag kan niet worden voltooid': '你好 你好 你好 你好你好 你好你好 你好',
+     'LandCode' : '你'
 };
